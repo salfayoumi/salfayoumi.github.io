@@ -1413,11 +1413,40 @@ html[data-theme="dark"] .hero-noise {
   border-radius: inherit;
   background: radial-gradient(
     circle at var(--pointer-x) var(--pointer-y),
-    rgba(255, 255, 255, 0.3),
-    transparent 34%
+    rgba(255, 255, 255, 0.12),
+    transparent 27%
   );
   content: "";
   pointer-events: none;
+}
+
+html[data-theme="light"] .portrait-card {
+  border-color: rgba(255, 255, 255, 0.54);
+  background:
+    linear-gradient(155deg, rgba(69, 43, 178, 0.92), rgba(72, 89, 217, 0.84)),
+    rgba(55, 41, 145, 0.88);
+  box-shadow: 0 32px 76px rgba(48, 38, 128, 0.3);
+}
+
+html[data-theme="light"] .portrait-card::after {
+  background: radial-gradient(
+    circle at var(--pointer-x) var(--pointer-y),
+    rgba(255, 255, 255, 0.1),
+    transparent 24%
+  );
+}
+
+html[data-theme="light"] .visual-orbit {
+  border-color: rgba(104, 71, 245, 0.28);
+}
+
+html[data-theme="light"] .portrait-caption span {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+html[data-theme="light"] .portrait-path {
+  border-color: rgba(255, 255, 255, 0.34);
+  background: rgba(20, 12, 79, 0.32);
 }
 
 .portrait-core {
@@ -1690,6 +1719,10 @@ html[data-theme="light"] .project {
     radial-gradient(circle at 14% 92%, rgba(255, 210, 88, 0.24), transparent 26%),
     radial-gradient(circle at 85% 4%, rgba(14, 159, 145, 0.34), transparent 28%),
     linear-gradient(135deg, #5434db, #6d4df4 52%, #5133c4);
+}
+
+.online h2 {
+  margin-top: 0;
 }
 
 @keyframes coreSpin {
