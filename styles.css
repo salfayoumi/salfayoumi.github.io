@@ -1453,6 +1453,16 @@ html[data-theme="light"] .portrait-path {
   position: relative;
 }
 
+.portrait-core img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: 50% 44%;
+  filter: contrast(1.03) saturate(0.94);
+}
+
 .portrait-core::before,
 .portrait-core::after {
   position: absolute;
