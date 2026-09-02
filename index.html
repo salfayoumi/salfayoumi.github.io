@@ -9,7 +9,7 @@
     />
     <meta name="author" content="Salsabeel Alfayoumi" />
     <meta name="robots" content="index, follow" />
-    <meta name="theme-color" content="#6c4cff" />
+    <meta name="theme-color" content="#6847f5" />
     <link rel="canonical" href="https://salfayoumi.github.io/" />
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
     <meta property="og:type" content="profile" />
@@ -57,6 +57,7 @@
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
+    <div class="scroll-progress" aria-hidden="true"><span></span></div>
 
     <header class="site-header">
       <a class="brand" href="#top" aria-label="Salsabeel Alfayoumi, home">
@@ -72,8 +73,8 @@
       </nav>
 
       <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch color theme">
-        <span class="theme-icon theme-icon-light" aria-hidden="true">☼</span>
-        <span class="theme-icon theme-icon-dark" aria-hidden="true">●</span>
+        <span class="theme-icon theme-icon-light" aria-hidden="true">☀</span>
+        <span class="theme-icon theme-icon-dark" aria-hidden="true">◐</span>
       </button>
     </header>
 
@@ -81,7 +82,7 @@
       <section class="hero" id="top">
         <div class="hero-noise" aria-hidden="true"></div>
         <div class="hero-copy reveal">
-          <p class="eyebrow"><span></span> Computer engineering · Python · Applied AI</p>
+          <p class="eyebrow"><span></span> Python · Applied AI · Intelligent systems</p>
           <h1>
             Hi, I&apos;m <em>Salsabeel.</em>
             <span>I make complex things feel clear.</span>
@@ -113,10 +114,13 @@
           <div class="visual-orbit orbit-two" aria-hidden="true"></div>
           <div class="portrait-card">
             <div class="portrait-topline">
-              <span>Profile / 2026</span>
+              <span>Build / learn / refine</span>
               <i aria-hidden="true"></i>
             </div>
             <div class="portrait-core" aria-hidden="true">SA</div>
+            <div class="portrait-path" aria-label="My process: signals and data become models, then useful systems">
+              <span>Signals + data</span><i>→</i><span>Models</span><i>→</i><span>Useful systems</span>
+            </div>
             <div class="portrait-caption">
               <strong>Computer Engineering</strong>
               <span>Karadeniz Technical University</span>
@@ -136,10 +140,17 @@
       </section>
 
       <div class="skill-ribbon" aria-label="Core areas">
-        <div>
+        <div class="skill-ribbon-track">
+          <div class="skill-ribbon-set">
+            <span>Python</span><i>✦</i><span>Applied AI</span><i>✦</i><span>Machine Learning</span><i>✦</i>
+            <span>Data Analysis</span><i>✦</i><span>Intelligent Systems</span><i>✦</i>
+            <span>Software Engineering</span><i>✦</i>
+          </div>
+          <div class="skill-ribbon-set" aria-hidden="true">
           <span>Python</span><i>✦</i><span>Applied AI</span><i>✦</i><span>Machine Learning</span><i>✦</i>
           <span>Data Analysis</span><i>✦</i><span>Intelligent Systems</span><i>✦</i>
-          <span>Software Engineering</span>
+            <span>Software Engineering</span><i>✦</i>
+          </div>
         </div>
       </div>
 
