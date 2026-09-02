@@ -199,6 +199,57 @@
         </div>
 
         <div class="project-grid">
+          <article class="project project-featured project-industrial reveal">
+            <div class="industrial-visual" aria-label="Synthetic equipment telemetry anomaly-detection summary">
+              <div class="industrial-topline">
+                <span>Equipment 07 · Simulation</span>
+                <i>Healthy baseline</i>
+              </div>
+              <svg class="sensor-chart" viewBox="0 0 680 250" role="img" aria-label="Temperature, vibration, and pressure signals with an anomaly interval">
+                <g class="chart-grid" aria-hidden="true">
+                  <path d="M0 50H680 M0 100H680 M0 150H680 M0 200H680" />
+                  <path d="M85 0V250 M170 0V250 M255 0V250 M340 0V250 M425 0V250 M510 0V250 M595 0V250" />
+                </g>
+                <rect class="chart-alert-zone" x="435" y="0" width="92" height="250" rx="10" />
+                <path class="chart-line chart-temperature" d="M0 153 C45 142 64 151 101 141 S165 130 205 145 S274 154 316 137 S382 135 421 141 C447 139 456 84 478 72 S510 96 530 125 S602 145 680 136" />
+                <path class="chart-line chart-vibration" d="M0 188 C42 194 72 182 110 189 S180 198 218 186 S286 183 329 192 S390 185 430 190 C452 187 461 115 480 168 S506 108 527 180 S603 190 680 184" />
+                <path class="chart-line chart-pressure" d="M0 93 C47 86 76 95 122 89 S188 82 229 91 S296 99 339 88 S393 84 433 91 C451 93 465 133 486 146 S508 137 529 113 S604 90 680 96" />
+              </svg>
+              <div class="industrial-legend" aria-hidden="true">
+                <span><i class="legend-temperature"></i>Temperature</span>
+                <span><i class="legend-vibration"></i>Vibration</span>
+                <span><i class="legend-pressure"></i>Pressure</span>
+              </div>
+              <div class="industrial-stats">
+                <div><strong>70.7%</strong><span>fault recall</span></div>
+                <div><strong>4.4%</strong><span>false-positive rate</span></div>
+                <div><strong>5</strong><span>sensor streams</span></div>
+              </div>
+            </div>
+            <div class="project-copy">
+              <p class="project-number">01 · Applied AI & industrial systems</p>
+              <h3>Industrial Sensor Intelligence</h3>
+              <p>
+                A tested anomaly-detection system that learns a healthy equipment
+                baseline and flags unusual temperature, vibration, pressure, RPM,
+                and load behavior. It includes a dashboard, scoring API, automated
+                tests, CI, and Docker support.
+              </p>
+              <div class="project-proof">
+                <span>Isolation Forest</span>
+                <span>Time-series features</span>
+                <span>Explainable risk scores</span>
+              </div>
+              <p class="stack">Python · Scikit-learn · FastAPI · Streamlit · Docker</p>
+              <a
+                class="project-link"
+                href="https://github.com/salfayoumi/industrial-sensor-intelligence"
+                target="_blank"
+                rel="noreferrer"
+              >View repository <span>↗</span></a>
+            </div>
+          </article>
+
           <article class="project project-featured project-signal reveal">
             <div class="signal-visual" aria-label="CNN RNN model with 97.9 percent accuracy">
               <div class="signal-wave" aria-hidden="true">
@@ -210,7 +261,7 @@
               <div class="signal-score"><span>Accuracy</span><strong>97.9%</strong></div>
             </div>
             <div class="project-copy">
-              <p class="project-number">01 · Deep learning & signal processing</p>
+              <p class="project-number">02 · Deep learning & signal processing</p>
               <h3>Hand Gesture Recognition</h3>
               <p>
                 My graduation project explored human–machine interaction through a
@@ -245,7 +296,7 @@
               />
             </div>
             <div class="project-copy">
-              <p class="project-number">02 · Natural language processing</p>
+              <p class="project-number">03 · Natural language processing</p>
               <h3>Book Review Analyzer & Recommender</h3>
               <p>
                 A sentiment classifier trained on 20,000 reviews, paired with a
@@ -284,12 +335,12 @@
               />
             </div>
             <div class="project-copy">
-              <p class="project-number">03 · Python & data analysis</p>
+              <p class="project-number">04 · Python & data analysis</p>
               <h3>Bilingual Decision Support System</h3>
               <p>
-                A modular Python application built during a completed KivaCRM internship.
-                It validates data, segments customers, forecasts revenue, generates
-                recommendations, and presents results in English and Turkish.
+                A modular Python application that validates data, segments customers,
+                forecasts revenue, generates explainable recommendations, and presents
+                results in English and Turkish.
               </p>
               <p class="stack">Python · Pandas · Plotly · OpenPyXL · Streamlit</p>
               <a
@@ -311,11 +362,11 @@
         <div class="toolkit-grid reveal">
           <div class="tool-group tool-purple">
             <span>Applied AI</span>
-            <p>Machine learning · Deep learning · NLP · Signal processing · Model evaluation</p>
+            <p>Machine learning · Deep learning · Anomaly detection · NLP · Signal processing</p>
           </div>
           <div class="tool-group tool-coral">
             <span>Python engineering</span>
-            <p>Python · Streamlit · REST APIs · Git · Linux · Modular design</p>
+            <p>Python · FastAPI · Streamlit · REST APIs · Testing · CI · Docker · Git</p>
           </div>
           <div class="tool-group tool-teal">
             <span>Data</span>
