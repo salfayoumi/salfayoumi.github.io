@@ -1,6 +1,6 @@
 # Salsabeel Alfayoumi — Portfolio
 
-Personal portfolio for Salsabeel Alfayoumi, featuring work across data, applied AI, business intelligence, and software engineering.
+Personal portfolio for Salsabeel Alfayoumi, featuring work across Python, applied AI, data analysis, signal processing, and intelligent systems.
 
 ## Site
 
