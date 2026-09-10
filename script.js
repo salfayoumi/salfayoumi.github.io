@@ -44,38 +44,6 @@ window.addEventListener(
 
 updateScrollProgress();
 
-const documentProject = document.querySelector(".project-docs");
-if (documentProject) {
-  const proofItems = [...documentProject.querySelectorAll(".project-proof span")];
-  const testCount = proofItems.find((item) => item.textContent?.includes("automated tests"));
-  if (testCount) testCount.textContent = "12 automated tests";
-
-  const sourceLink = documentProject.querySelector(
-    'a[href="https://github.com/salfayoumi/multilingual-document-intelligence"]',
-  );
-
-  if (sourceLink && !documentProject.querySelector('a[href="https://multilingual-document-intelligence.streamlit.app/"]')) {
-    const links = document.createElement("div");
-    links.className = "project-links";
-
-    const liveDemo = document.createElement("a");
-    liveDemo.className = "project-link";
-    liveDemo.href = "https://multilingual-document-intelligence.streamlit.app/";
-    liveDemo.target = "_blank";
-    liveDemo.rel = "noreferrer";
-    liveDemo.innerHTML = "Live demo <span>↗</span>";
-
-    sourceLink.textContent = "";
-    sourceLink.append("Source ");
-    const sourceArrow = document.createElement("span");
-    sourceArrow.textContent = "↗";
-    sourceLink.append(sourceArrow);
-
-    sourceLink.replaceWith(links);
-    links.append(liveDemo, sourceLink);
-  }
-}
-
 const heroVisual = document.querySelector(".hero-visual");
 const canTilt = window.matchMedia("(pointer: fine)").matches
   && !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
