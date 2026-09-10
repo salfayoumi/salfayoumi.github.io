@@ -1,0 +1,292 @@
+name: Build social previews
+
+on:
+  push:
+    paths:
+      - '.github/workflows/build-social-previews.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install Pillow
+        run: python -m pip install --quiet pillow
+
+      - name: Generate previews and project pages
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          from PIL import Image, ImageDraw, ImageFont, ImageOps, ImageFilter
+          from html import escape
+          import math
+
+          ROOT = Path('.')
+          SOCIAL = ROOT / 'assets' / 'social'
+          SOCIAL.mkdir(parents=True, exist_ok=True)
+
+          W, H = 1200, 630
+          BOLD = '/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf'
+          REG = '/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf'
+
+          def font(size, bold=False):
+              return ImageFont.truetype(BOLD if bold else REG, size)
+
+          def rounded_panel(draw, box, fill, outline=None, radius=28, width=1):
+              draw.rounded_rectangle(box, radius=radius, fill=fill, outline=outline, width=width)
+
+          def add_brand(draw, fg):
+              draw.text((64, 558), 'Salsabeel Alfayoumi · Portfolio Project', font=font(20, True), fill=fg)
+
+          def save(im, name):
+              im.convert('RGB').save(SOCIAL / f'{name}.jpg', 'JPEG', quality=90, optimize=True, progressive=True)
+
+          def gradient(bg1, bg2):
+              im = Image.new('RGB', (W, H), bg1)
+              px = im.load()
+              for y in range(H):
+                  t = y / max(H - 1, 1)
+                  row = tuple(int(bg1[i] * (1-t) + bg2[i] * t) for i in range(3))
+                  for x in range(W):
+                      px[x, y] = row
+              return im
+
+          # Portfolio preview — deliberately no portrait.
+          im = gradient((12, 19, 33), (20, 31, 51))
+          d = ImageDraw.Draw(im, 'RGBA')
+          d.ellipse((820, -120, 1310, 370), fill=(104, 71, 245, 42))
+          d.ellipse((930, 300, 1270, 640), fill=(14, 159, 145, 30))
+          for i, (x, y) in enumerate([(835,160),(935,115),(1035,210),(915,285),(1085,340),(780,350)]):
+              d.line((780, 410, x, y), fill=(144, 132, 255, 75), width=2)
+              d.ellipse((x-7,y-7,x+7,y+7), fill=(255,210,88,210) if i % 2 else (128,112,255,220))
+          d.text((64, 90), 'Salsabeel Alfayoumi', font=font(58, True), fill=(248,248,252,255))
+          d.text((66, 164), 'PORTFOLIO', font=font(27, True), fill=(160, 140, 255,255))
+          d.text((66, 232), 'Python  ·  Applied AI  ·  Data Analysis  ·  Intelligent Systems', font=font(28), fill=(222,226,237,255))
+          d.rounded_rectangle((66, 304, 128, 310), radius=3, fill=(255,210,88,255))
+          d.text((66, 340), 'Practical systems that turn signals, language, and data\ninto useful decisions.', font=font(30), fill=(220,225,235,255), spacing=10)
+          save(im, 'portfolio')
+
+          # Multilingual Document Intelligence.
+          im = Image.new('RGB', (W, H), (246, 247, 252))
+          d = ImageDraw.Draw(im, 'RGBA')
+          d.ellipse((790, -80, 1290, 430), fill=(104,71,245,24))
+          d.text((62, 62), 'Multilingual', font=font(50, True), fill=(22,27,38,255))
+          d.text((62, 118), 'Document Intelligence', font=font(50, True), fill=(22,27,38,255))
+          d.text((64, 200), 'Arabic · Turkish · English', font=font(25, True), fill=(104,71,245,255))
+          d.text((64, 254), 'Hybrid retrieval, cited answers, and safeguards\nagainst unsupported responses.', font=font(29), fill=(67,74,88,255), spacing=8)
+          rounded_panel(d, (700, 86, 1110, 450), (255,255,255,245), (214,216,228,255), 28)
+          for idx, yy in enumerate((126, 194, 262)):
+              rounded_panel(d, (755, yy, 1030, yy+92), (244,245,251,255), (219,220,230,255), 14)
+              d.rectangle((780, yy+20, 950, yy+29), fill=(160,166,186,150))
+              d.rectangle((780, yy+43, 990-idx*25, yy+52), fill=(189,194,210,150))
+              d.rectangle((780, yy+66, 925+idx*18, yy+75), fill=(206,209,220,150))
+          rounded_panel(d, (666, 384, 1010, 445), (104,71,245,255), None, 28)
+          d.text((702, 399), 'Find evidence  →  cite it', font=font(23, True), fill=(255,255,255,255))
+          add_brand(d, (65,68,79,255))
+          save(im, 'multilingual-document-intelligence')
+
+          # Industrial Sensor Intelligence.
+          im = gradient((11, 35, 39), (14, 47, 50))
+          d = ImageDraw.Draw(im, 'RGBA')
+          d.text((62, 66), 'Industrial Sensor', font=font(50, True), fill=(246,250,250,255))
+          d.text((62, 122), 'Intelligence', font=font(50, True), fill=(246,250,250,255))
+          d.text((64, 207), 'Applied AI · anomaly detection · time-series features', font=font(25), fill=(201,225,223,255))
+          rounded_panel(d, (650, 88, 1138, 485), (6,24,27,205), (69,119,119,180), 24)
+          # chart grid
+          for yy in range(150, 450, 60):
+              d.line((700, yy, 1090, yy), fill=(123,164,164,55), width=1)
+          for xx in range(700, 1091, 78):
+              d.line((xx, 130, xx, 450), fill=(123,164,164,40), width=1)
+          pts1=[]; pts2=[]
+          for i in range(80):
+              x=700+i*5
+              y=240 + 18*math.sin(i*.52) + (75 if 52 < i < 60 else 0)
+              pts1.append((x,y))
+              y2=350 + 11*math.sin(i*.78) - (62 if 53 < i < 59 else 0)
+              pts2.append((x,y2))
+          d.line(pts1, fill=(68,211,191,255), width=4)
+          d.line(pts2, fill=(255,102,92,255), width=4)
+          d.text((700, 103), 'EQUIPMENT 07 · TELEMETRY', font=font(20, True), fill=(179,214,210,255))
+          d.text((64, 305), 'Learn a healthy baseline.\nFlag unusual behavior.\nExplain the risk score.', font=font(32), fill=(232,241,240,255), spacing=10)
+          add_brand(d, (220,235,233,255))
+          save(im, 'industrial-sensor-intelligence')
+
+          # Hand Gesture Recognition.
+          im = gradient((8, 24, 45), (14, 39, 67))
+          d = ImageDraw.Draw(im, 'RGBA')
+          d.text((62, 66), 'Hand Gesture Recognition', font=font(47, True), fill=(247,249,252,255))
+          d.text((62, 121), 'with sEMG Signals', font=font(47, True), fill=(247,249,252,255))
+          d.text((64, 205), 'Deep learning · signal processing · human–machine interaction', font=font(24), fill=(190,211,232,255))
+          # sEMG waveforms
+          for row in range(4):
+              pts=[]
+              base=315+row*52
+              for i in range(112):
+                  x=62+i*5
+                  amp=12+8*math.sin(i*.16+row)
+                  y=base + amp*math.sin(i*(.72+row*.06))
+                  pts.append((x,y))
+              d.line(pts, fill=(74+row*18,156+row*12,222,190), width=2)
+          rounded_panel(d, (790, 284, 1115, 477), (255,255,255,18), (113,162,210,105), 24)
+          d.text((840, 316), '97.9%', font=font(70, True), fill=(255,255,255,255))
+          d.text((876, 401), 'accuracy', font=font(25), fill=(183,207,231,255))
+          add_brand(d, (212,228,243,255))
+          save(im, 'hand-gesture-recognition')
+
+          def screenshot_preview(name, title_lines, subtitle, asset_path, bg, fg):
+              im = Image.new('RGB', (W,H), bg)
+              d = ImageDraw.Draw(im, 'RGBA')
+              y=72
+              for line in title_lines:
+                  d.text((62,y), line, font=font(44,True), fill=fg)
+                  y += 54
+              d.text((64, y+25), subtitle, font=font(24), fill=fg)
+              asset = ROOT / asset_path
+              if asset.exists():
+                  shot = Image.open(asset).convert('RGB')
+                  shot = ImageOps.fit(shot, (460, 390), method=Image.Resampling.LANCZOS)
+                  mask = Image.new('L', shot.size, 0)
+                  md = ImageDraw.Draw(mask)
+                  md.rounded_rectangle((0,0,shot.width,shot.height), radius=22, fill=255)
+                  shadow = Image.new('RGBA', (500,430), (0,0,0,0))
+                  sd = ImageDraw.Draw(shadow)
+                  sd.rounded_rectangle((20,20,480,410), radius=24, fill=(0,0,0,60))
+                  shadow = shadow.filter(ImageFilter.GaussianBlur(14))
+                  im.paste(shadow, (670,82), shadow)
+                  im.paste(shot, (690,102), mask)
+              add_brand(d, fg)
+              save(im, name)
+
+          screenshot_preview(
+              'book-review-analyzer',
+              ['Book Review Analyzer &', 'Mood-Based Recommender'],
+              'NLP · sentiment analysis · recommendations · Streamlit',
+              'assets/book-app.webp',
+              (246,243,236),
+              (28,28,30,255),
+          )
+
+          screenshot_preview(
+              'bilingual-decision-support',
+              ['Bilingual Decision', 'Support System'],
+              'Python · data analysis · forecasting · BI dashboard',
+              'assets/bi-dashboard.webp',
+              (245,248,248),
+              (28,35,38,255),
+          )
+
+          # Patch the root site's share metadata and keep the latest MDI project update in HTML.
+          index_path = ROOT / 'index.html'
+          index = index_path.read_text(encoding='utf-8')
+          og_url = '    <meta property="og:url" content="https://salfayoumi.github.io/" />'
+          if 'property="og:image"' not in index:
+              share_meta = og_url + '''\n    <meta property="og:image" content="https://salfayoumi.github.io/assets/social/portfolio.jpg" />\n    <meta property="og:image:secure_url" content="https://salfayoumi.github.io/assets/social/portfolio.jpg" />\n    <meta property="og:image:width" content="1200" />\n    <meta property="og:image:height" content="630" />\n    <meta property="og:image:alt" content="Salsabeel Alfayoumi portfolio — Python, applied AI, data analysis, and intelligent systems" />\n    <meta name="twitter:card" content="summary_large_image" />\n    <meta name="twitter:image" content="https://salfayoumi.github.io/assets/social/portfolio.jpg" />'''
+              index = index.replace(og_url, share_meta)
+
+          index = index.replace('<span>11 automated tests</span>', '<span>12 automated tests</span>')
+          old_mdi = '''              <a\n                class="project-link"\n                href="https://github.com/salfayoumi/multilingual-document-intelligence"\n                target="_blank"\n                rel="noreferrer"\n              >View repository <span>↗</span></a>'''
+          new_mdi = '''              <div class="project-links">\n                <a\n                  class="project-link"\n                  href="https://multilingual-document-intelligence.streamlit.app/"\n                  target="_blank"\n                  rel="noreferrer"\n                >Live demo <span>↗</span></a>\n                <a\n                  class="project-link"\n                  href="https://github.com/salfayoumi/multilingual-document-intelligence"\n                  target="_blank"\n                  rel="noreferrer"\n                >Source <span>↗</span></a>\n              </div>'''
+          index = index.replace(old_mdi, new_mdi)
+          index_path.write_text(index, encoding='utf-8')
+
+          # Remove the temporary DOM patch used during the emergency site repair.
+          script_path = ROOT / 'script.js'
+          script = script_path.read_text(encoding='utf-8')
+          start = script.find('const documentProject = document.querySelector(".project-docs");')
+          end = script.find('const heroVisual = document.querySelector(".hero-visual");')
+          if start != -1 and end != -1 and start < end:
+              script = script[:start] + script[end:]
+              script_path.write_text(script, encoding='utf-8')
+
+          projects = [
+              {
+                  'slug':'multilingual-document-intelligence',
+                  'title':'Multilingual Document Intelligence',
+                  'desc':'A citation-first document intelligence system for Arabic, Turkish, and English using hybrid retrieval and evidence safeguards.',
+                  'tags':['Python','Information Retrieval','NLP','FastAPI','Streamlit'],
+                  'repo':'https://github.com/salfayoumi/multilingual-document-intelligence',
+                  'demo':'https://multilingual-document-intelligence.streamlit.app/',
+              },
+              {
+                  'slug':'industrial-sensor-intelligence',
+                  'title':'Industrial Sensor Intelligence',
+                  'desc':'An applied-AI anomaly-detection system for multivariate equipment telemetry with explainable risk scores and a scoring API.',
+                  'tags':['Python','Machine Learning','Time Series','FastAPI','Streamlit'],
+                  'repo':'https://github.com/salfayoumi/industrial-sensor-intelligence',
+                  'demo':'',
+              },
+              {
+                  'slug':'hand-gesture-recognition',
+                  'title':'Hand Gesture Recognition with sEMG Signals',
+                  'desc':'A deep-learning human–machine interaction project that classifies hand gestures from surface EMG signals with 97.9% accuracy.',
+                  'tags':['Python','Deep Learning','Signal Processing','CNN–RNN','sEMG'],
+                  'repo':'https://github.com/salfayoumi/Hand-Gesture-Recognition-with-a-CNN-RNN-Hybrid-Module',
+                  'demo':'',
+              },
+              {
+                  'slug':'book-review-analyzer',
+                  'title':'Book Review Analyzer & Mood-Based Recommender',
+                  'desc':'An NLP application trained on 20,000 book reviews to classify sentiment and recommend books by mood.',
+                  'tags':['Python','NLP','Scikit-learn','TF-IDF','Streamlit'],
+                  'repo':'https://github.com/salfayoumi/book-review-analyzer',
+                  'demo':'https://book-review-analyzer-eekqesizeaplexpejnpcrb.streamlit.app/',
+              },
+              {
+                  'slug':'bilingual-decision-support',
+                  'title':'Bilingual Decision Support System',
+                  'desc':'A modular Python application for data validation, customer segmentation, revenue forecasting, recommendations, and bilingual reporting.',
+                  'tags':['Python','Pandas','Plotly','Forecasting','Data Analysis'],
+                  'repo':'https://github.com/salfayoumi/python-bi-reporting-system',
+                  'demo':'',
+              },
+          ]
+
+          page_template = '''<!doctype html>\n<html lang="en">\n<head>\n  <meta charset="utf-8" />\n  <meta name="viewport" content="width=device-width, initial-scale=1" />\n  <title>{title} — Salsabeel Alfayoumi</title>\n  <meta name="description" content="{desc}" />\n  <link rel="canonical" href="https://salfayoumi.github.io/projects/{slug}/" />\n  <meta property="og:type" content="website" />\n  <meta property="og:title" content="{title} — Salsabeel Alfayoumi" />\n  <meta property="og:description" content="{desc}" />\n  <meta property="og:url" content="https://salfayoumi.github.io/projects/{slug}/" />\n  <meta property="og:image" content="https://salfayoumi.github.io/assets/social/{slug}.jpg" />\n  <meta property="og:image:secure_url" content="https://salfayoumi.github.io/assets/social/{slug}.jpg" />\n  <meta property="og:image:width" content="1200" />\n  <meta property="og:image:height" content="630" />\n  <meta name="twitter:card" content="summary_large_image" />\n  <meta name="twitter:image" content="https://salfayoumi.github.io/assets/social/{slug}.jpg" />\n  <style>\n    :root {{ color-scheme: light dark; --bg:#0c111b; --card:#131d2b; --ink:#f8f7f3; --muted:#b8c1cf; --purple:#7c63ff; --yellow:#ffd258; }}\n    * {{ box-sizing:border-box; }}\n    body {{ margin:0; min-height:100vh; display:grid; place-items:center; padding:40px 22px; background:radial-gradient(circle at 15% 10%,rgba(124,99,255,.18),transparent 30rem),var(--bg); color:var(--ink); font-family:Inter,Segoe UI,system-ui,sans-serif; }}\n    main {{ width:min(980px,100%); }}\n    .back {{ color:var(--muted); text-decoration:none; font-weight:700; }}\n    article {{ margin-top:28px; overflow:hidden; border:1px solid rgba(255,255,255,.12); border-radius:28px; background:var(--card); box-shadow:0 28px 90px rgba(0,0,0,.28); }}\n    img {{ display:block; width:100%; aspect-ratio:1200/630; object-fit:cover; }}\n    .copy {{ padding:34px; }}\n    h1 {{ margin:0; font-size:clamp(2.2rem,6vw,4.8rem); line-height:.98; letter-spacing:-.055em; }}\n    p {{ max-width:780px; color:var(--muted); font-size:1.08rem; line-height:1.75; }}\n    .tags {{ display:flex; flex-wrap:wrap; gap:9px; margin:24px 0 30px; }}\n    .tag {{ padding:8px 11px; border-radius:999px; background:rgba(124,99,255,.15); color:#ddd6ff; font-size:.78rem; font-weight:800; }}\n    .links {{ display:flex; flex-wrap:wrap; gap:12px; }}\n    .button {{ display:inline-flex; align-items:center; gap:8px; padding:12px 16px; border-radius:12px; background:var(--purple); color:white; text-decoration:none; font-weight:850; }}\n    .button.secondary {{ border:1px solid rgba(255,255,255,.18); background:transparent; }}\n  </style>\n</head>\n<body>\n  <main>\n    <a class="back" href="/">← Back to portfolio</a>\n    <article>\n      <img src="/assets/social/{slug}.jpg" alt="{title} project preview" width="1200" height="630" />\n      <div class="copy">\n        <h1>{title}</h1>\n        <p>{desc}</p>\n        <div class="tags">{tags}</div>\n        <div class="links">{buttons}</div>\n      </div>\n    </article>\n  </main>\n</body>\n</html>'''
+
+          for p in projects:
+              tags = ''.join(f'<span class="tag">{escape(t)}</span>' for t in p['tags'])
+              buttons = ''
+              if p['demo']:
+                  buttons += f'<a class="button" href="{escape(p["demo"])}" target="_blank" rel="noreferrer">Live demo ↗</a>'
+              buttons += f'<a class="button secondary" href="{escape(p["repo"])}" target="_blank" rel="noreferrer">Source code ↗</a>'
+              html = page_template.format(
+                  title=escape(p['title']), desc=escape(p['desc']), slug=p['slug'], tags=tags, buttons=buttons
+              )
+              page_dir = ROOT / 'projects' / p['slug']
+              page_dir.mkdir(parents=True, exist_ok=True)
+              (page_dir / 'index.html').write_text(html, encoding='utf-8')
+
+          # Add project landing pages to sitemap when possible.
+          sitemap_path = ROOT / 'sitemap.xml'
+          if sitemap_path.exists():
+              sitemap = sitemap_path.read_text(encoding='utf-8')
+              if 'projects/multilingual-document-intelligence/' not in sitemap:
+                  entries = '\n'.join(
+                      f'  <url><loc>https://salfayoumi.github.io/projects/{p["slug"]}/</loc></url>' for p in projects
+                  )
+                  sitemap = sitemap.replace('</urlset>', entries + '\n</urlset>')
+                  sitemap_path.write_text(sitemap, encoding='utf-8')
+          PY
+
+      - name: Commit generated previews
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/social projects index.html script.js sitemap.xml
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Add professional social previews"
+            git push
+          fi
