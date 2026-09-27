@@ -3,61 +3,254 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="YA HALA! An interactive Palestinian Arabic survival quest for complete beginners.">
-<meta name="theme-color" content="#0a4650">
-<title>YA HALA! Palestinian Arabic Survival Quest</title>
+<meta name="description" content="YA HALA! — an animated Palestinian Arabic story adventure.">
+<meta name="theme-color" content="#133f42">
+<title>YA HALA! — Palestinian Arabic Story Adventure</title>
 <style>
-:root{--ink:#0a4650;--ink2:#173f44;--paper:#fffaf0;--paper2:#f7eedc;--yellow:#f1c232;--red:#da4561;--teal:#168a91;--mint:#cfe8d7;--sky:#d8eef3;--green:#4f8268;--purple:#755a9b;--line:#d9cfbd;--shadow:0 14px 38px rgba(24,57,58,.12)}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#eee6d5;color:var(--ink2);font:16px/1.5 Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Arial,sans-serif}.arabic,[dir=rtl]{font-family:"Segoe UI",Tahoma,Arial,sans-serif}.wrap{width:min(1180px,calc(100% - 28px));margin:auto}.top{position:sticky;top:0;z-index:20;background:rgba(255,250,240,.96);border-bottom:1px solid var(--line);backdrop-filter:blur(10px)}.topin{min-height:68px;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}.brand{font-weight:1000;color:var(--ink);letter-spacing:-.04em;font-size:1.45rem}.brand span{color:var(--red)}.stats{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.pill{border:1px solid var(--line);background:#fff;border-radius:999px;padding:8px 12px;font-size:.86rem;font-weight:800}.bar{width:150px;height:9px;border-radius:999px;background:#e5ddce;overflow:hidden}.bar>i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--yellow),var(--red));transition:.25s}
-.hero{padding:30px 0 18px}.heroGrid{display:grid;grid-template-columns:1.12fr .88fr;gap:22px;align-items:stretch}.heroArt{min-height:520px;border-radius:28px;padding:34px;background:linear-gradient(145deg,#fff6c9 0%,#f1c232 35%,#168a91 100%);box-shadow:var(--shadow);position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end}.heroArt:before,.heroArt:after{content:"";position:absolute;border-radius:50%;background:rgba(255,255,255,.17)}.heroArt:before{width:260px;height:260px;left:-80px;top:-70px}.heroArt:after{width:340px;height:340px;right:-110px;bottom:-120px}.kicker{font-weight:1000;letter-spacing:.12em;font-size:.82rem;color:var(--ink)}h1{font-size:clamp(3.4rem,8vw,7.2rem);line-height:.82;letter-spacing:-.07em;margin:6px 0 10px;color:var(--ink);transform:rotate(-1deg)}.heroSub{font-size:clamp(1.3rem,3vw,2.2rem);font-weight:950;color:#fff;max-width:720px}.signs{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}.sign{font-weight:950;border-radius:8px;padding:9px 13px;background:#fff;color:var(--ink);transform:rotate(-1deg)}.sign:nth-child(2){background:#ffe27c}.sign:nth-child(3){background:#d8eef3}.sign:nth-child(4){background:#e4d9f2}.sign:nth-child(5){background:#ffcbd4}.heroSide{display:grid;gap:14px}.card{background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:22px;box-shadow:var(--shadow)}.card h2,.card h3{margin:0 0 8px;color:var(--ink)}.features{display:grid;grid-template-columns:1fr 1fr;gap:10px}.feature{background:#fff;border:1px solid var(--line);padding:13px;border-radius:14px;font-weight:800}.cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}.btn{appearance:none;border:0;border-radius:13px;min-height:44px;padding:10px 16px;font:inherit;font-weight:900;cursor:pointer;background:var(--ink);color:#fff}.btn.alt{background:var(--yellow);color:var(--ink)}.btn.soft{background:#fff;color:var(--ink);border:1px solid var(--line)}.btn:focus-visible{outline:3px solid rgba(22,138,145,.35);outline-offset:2px}.missionMap{padding:12px 0 24px}.missionTabs{display:grid;grid-template-columns:repeat(7,1fr);gap:9px}.mtab{min-height:92px;padding:10px;border:1px solid var(--line);border-radius:16px;background:#fff;cursor:pointer;text-align:left}.mtab strong{display:block;color:var(--ink);font-size:.9rem}.mtab small{display:block;margin-top:4px}.mtab.active{background:var(--ink);color:#fff}.mtab.active strong{color:#fff}.mtab.done{box-shadow:inset 0 0 0 3px #72a786}
-.main{padding:4px 0 50px}.mission{display:none}.mission.active{display:block}.missionHead{display:grid;grid-template-columns:100px 1fr;gap:18px;align-items:center;margin-bottom:16px}.badge{width:96px;height:96px;border-radius:24px;background:var(--yellow);display:grid;place-items:center;font-size:2.5rem;box-shadow:var(--shadow)}.missionTitle h2{font-size:clamp(2rem,5vw,4rem);line-height:.95;margin:4px 0;color:var(--ink);letter-spacing:-.04em}.missionTitle p{margin:0;max-width:760px}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}.sectionTitle{font-size:1.35rem;font-weight:1000;color:var(--ink);margin:0 0 12px}.phraseList{display:grid;gap:9px}.phrase{display:grid;grid-template-columns:46px 1fr auto;gap:12px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:15px;padding:12px}.play{width:42px;height:42px;border-radius:50%;border:0;background:var(--teal);color:#fff;font-size:1.05rem;cursor:pointer}.ar{font-size:1.25rem;font-weight:900;color:var(--ink);direction:rtl;text-align:right}.roman{font-weight:800;color:#1a6681}.eng{font-size:.9rem;color:#5a625f}.reveal{border:0;background:var(--paper2);color:var(--ink);border-radius:10px;padding:8px 10px;font-weight:900;cursor:pointer}.hiddenMeaning{display:none}.phrase.open .hiddenMeaning{display:block}.phrase.open .shortMeaning{display:none}.callout{padding:16px;border-radius:17px;border:1px solid var(--line);background:#fff}.culture{background:#eef7ef}.listen{background:#fff0f3}.speak{background:#eef7f8}.challenge{background:#fff8d9}.dialogue{display:grid;gap:10px}.bubble{max-width:88%;padding:13px 15px;border-radius:16px;background:#e5f2f5;border:1px solid #c8e2e7}.bubble.me{margin-left:auto;background:#fde6eb;border-color:#f6cad3}.bubble .ar{text-align:left;direction:rtl}.choices{display:grid;gap:9px;margin-top:10px}.choice{width:100%;text-align:left;border:1px solid var(--line);background:#fff;border-radius:13px;padding:12px;font:inherit;cursor:pointer}.choice.correct{border-color:#6aa57c;background:#edf8f0}.choice.wrong{border-color:#d76572;background:#fff0f1}.status{min-height:24px;font-weight:900;margin-top:8px}.audioStatus{font-size:.86rem;color:#59615e;margin-top:7px}.completeRow{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:16px;flex-wrap:wrap}.completeRow .btn{background:var(--green)}.games{padding:8px 0 50px}.gameGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.gameQ{font-size:1.2rem;font-weight:950;color:var(--ink);margin:10px 0}.gameOpts{display:grid;gap:8px}.gameOpt{border:1px solid var(--line);background:#fff;border-radius:11px;padding:10px;cursor:pointer;text-align:left}.passport{display:grid;grid-template-columns:repeat(7,1fr);gap:9px;margin-top:10px}.stamp{min-height:82px;border:2px dashed #baa987;border-radius:14px;display:grid;place-items:center;text-align:center;padding:7px;font-weight:900;color:#82775f}.stamp.done{border-style:solid;background:#eef7ef;color:#3c6d51}.creator{display:none;margin-top:14px;padding:12px;border-radius:12px;background:#f1ecfb;border:1px solid #d9ceec}.creator.on{display:block}.foot{padding:26px 0 50px;color:#6f736e;text-align:center;font-size:.9rem}
-@media(max-width:900px){.heroGrid,.grid2{grid-template-columns:1fr}.missionTabs{grid-template-columns:repeat(4,1fr)}.gameGrid{grid-template-columns:1fr}.passport{grid-template-columns:repeat(4,1fr)}}@media(max-width:560px){.wrap{width:min(100% - 18px,1180px)}.heroArt{min-height:430px;padding:22px}.features{grid-template-columns:1fr}.missionTabs{grid-template-columns:repeat(2,1fr)}.missionHead{grid-template-columns:72px 1fr}.badge{width:70px;height:70px;font-size:2rem}.phrase{grid-template-columns:42px 1fr}.reveal{grid-column:2}.passport{grid-template-columns:repeat(2,1fr)}.bar{width:110px}}
+:root{
+  --ink:#133f42;--ink2:#234e50;--paper:#fff9ef;--cream:#f6ecd9;--yellow:#f1c232;
+  --red:#d94a62;--teal:#1d8a91;--green:#4e8268;--stone:#e8d7b8;--sky:#bfe1e8;
+  --line:#d9c9ac;--shadow:0 18px 50px rgba(20,56,58,.15);
+}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#efe6d7;color:var(--ink2);font:16px/1.5 Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Arial,sans-serif}
+button{font:inherit}.arabic,[dir=rtl]{font-family:"Segoe UI",Tahoma,Arial,sans-serif}
+.wrap{width:min(1180px,calc(100% - 24px));margin:auto}
+.top{position:sticky;top:0;z-index:40;background:rgba(255,249,239,.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.topin{min-height:68px;display:flex;align-items:center;gap:12px}.brand{font-size:1.4rem;font-weight:1000;letter-spacing:-.04em;color:var(--ink)}.brand span{color:var(--red)}
+.spacer{flex:1}.pill{padding:8px 11px;border-radius:999px;background:#fff;border:1px solid var(--line);font-weight:850;font-size:.88rem}
+.progress{width:150px;height:9px;background:#e5dcc9;border-radius:999px;overflow:hidden}.progress i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--red),var(--yellow),var(--teal));transition:.3s}
+.hero{padding:30px 0 18px}.heroGrid{display:grid;grid-template-columns:1.05fr .95fr;gap:20px}
+.heroCopy,.introPanel{background:var(--paper);border:1px solid var(--line);border-radius:28px;box-shadow:var(--shadow)}
+.heroCopy{padding:28px}.kicker{display:inline-block;background:var(--yellow);color:var(--ink);font-weight:950;padding:7px 11px;border-radius:999px;font-size:.82rem}
+h1{font-size:clamp(2.7rem,7vw,5.8rem);line-height:.88;letter-spacing:-.06em;margin:12px 0;color:var(--ink)}
+h1 em{font-style:normal;color:var(--red)}.lead{font-size:1.08rem;max-width:55ch}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.btn{border:0;border-radius:14px;padding:11px 15px;font-weight:900;cursor:pointer;background:var(--ink);color:#fff;box-shadow:0 6px 0 rgba(0,0,0,.12)}
+.btn.yellow{background:var(--yellow);color:var(--ink)}.btn.light{background:#fff;color:var(--ink);border:1px solid var(--line);box-shadow:none}
+.introPanel{padding:18px;display:grid;gap:12px}.mini{padding:14px;border-radius:18px;background:#fff;border:1px solid var(--line)}.mini b{display:block;color:var(--ink);margin-bottom:4px}
+.mapWrap{padding:8px 0 20px}.map{display:grid;grid-template-columns:repeat(7,1fr);gap:8px}.mBtn{background:#fff;border:1px solid var(--line);border-radius:16px;min-height:82px;padding:8px;cursor:pointer;font-weight:850;color:var(--ink)}
+.mBtn.active{outline:3px solid var(--yellow)}.mBtn.done{background:#eaf5ec;border-color:#78aa85}.mBtn small{display:block;color:#6b6b65;margin-top:3px}
+.gameArea{padding-bottom:42px}.storyCard{background:var(--paper);border:1px solid var(--line);border-radius:28px;box-shadow:var(--shadow);overflow:hidden}
+.storyHead{padding:20px 22px;border-bottom:1px solid var(--line);display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:center}
+.badge{width:70px;height:70px;border-radius:22px;background:var(--yellow);display:grid;place-items:center;font-size:2.2rem}.storyHead h2{margin:0;color:var(--ink);font-size:clamp(1.8rem,4vw,3rem);line-height:1}
+.storyHead p{margin:5px 0 0}.statusText{font-size:.82rem;color:#6b6b65}.storyBody{display:grid;grid-template-columns:1.17fr .83fr;gap:0}
+.stageWrap{padding:18px;border-right:1px solid var(--line);background:#efe6d6}.stage{height:520px;border-radius:24px;overflow:hidden;position:relative;background:linear-gradient(#bfe1e8 0 34%,#ead8b7 34% 100%);box-shadow:inset 0 0 0 1px rgba(0,0,0,.05)}
+.stage.sunset{background:linear-gradient(#f9d79d 0 34%,#e7cfab 34% 100%)}.stage.home{background:linear-gradient(#c6e0df 0 26%,#f2dfc3 26% 100%)}
+.sun{position:absolute;right:7%;top:7%;width:54px;height:54px;border-radius:50%;background:#f6ce49;opacity:.9}
+.cloud{position:absolute;width:90px;height:28px;border-radius:40px;background:rgba(255,255,255,.75);top:10%;left:9%}.cloud:before,.cloud:after{content:"";position:absolute;border-radius:50%;background:inherit}.cloud:before{width:34px;height:34px;left:17px;top:-14px}.cloud:after{width:42px;height:42px;right:13px;top:-19px}
+.buildings{position:absolute;left:0;right:0;bottom:31%;height:43%}.building{position:absolute;bottom:0;background:#d8bd90;border:2px solid #b89e76;border-bottom:0}.building:before{content:"";position:absolute;inset:10px;background:linear-gradient(90deg,transparent 48%,rgba(103,74,46,.12) 49% 51%,transparent 52%);opacity:.6}
+.b1{left:2%;width:26%;height:82%;border-radius:18px 18px 0 0}.b2{left:26%;width:31%;height:100%;background:#e4cda7;border-radius:22px 22px 0 0}.b3{right:2%;width:43%;height:77%;background:#cfb07e;border-radius:20px 20px 0 0}
+.arch{position:absolute;width:90px;height:116px;border:18px solid #7e795c;border-bottom:0;border-radius:50px 50px 0 0;bottom:0;left:50%;transform:translateX(-50%);background:#324347}
+.awning{position:absolute;left:9%;bottom:28%;width:210px;height:35px;background:repeating-linear-gradient(90deg,#d54855 0 28px,#f3e2bd 28px 56px);transform:skewX(-10deg);border:2px solid #7f664e}
+.counter{position:absolute;left:8%;bottom:16%;width:220px;height:80px;background:#8b633f;border:3px solid #6f4d31;border-radius:8px}.counter:before{content:"☕  ☕  🫖";position:absolute;left:18px;top:-28px;font-size:1.4rem}
+.marketStall{position:absolute;left:7%;bottom:14%;width:300px;height:150px;background:#8b633f;border:4px solid #6f4d31;border-radius:10px}.marketStall:before{content:"🍅   🫒   🍋   🥒";position:absolute;top:15px;left:25px;font-size:2rem;word-spacing:12px}.marketStall:after{content:"";position:absolute;left:-10px;right:-10px;top:-38px;height:38px;background:repeating-linear-gradient(90deg,#d54855 0 35px,#f7e3b7 35px 70px);border:2px solid #7c5a3b}
+.road{position:absolute;left:0;right:0;bottom:0;height:32%;background:#c8aa7f;clip-path:polygon(0 0,100% 8%,100% 100%,0 100%)}.road:after{content:"";position:absolute;left:14%;right:8%;top:46%;height:6px;background:repeating-linear-gradient(90deg,#eee 0 30px,transparent 30px 55px);opacity:.6}
+.sign{position:absolute;right:6%;bottom:35%;background:#356f63;color:#fff;border:4px solid #264f47;border-radius:6px;padding:8px 11px;font-weight:900;transform:rotate(1deg)}
+.tree{position:absolute;right:13%;bottom:28%;width:24px;height:90px;background:#6e4c31;border-radius:12px}.tree:before{content:"";position:absolute;width:90px;height:90px;border-radius:50%;background:#4e8268;left:-33px;top:-54px;box-shadow:33px 8px 0 #5d916f,-25px 13px 0 #6f9f78}
+.sofa{position:absolute;left:12%;bottom:17%;width:240px;height:100px;background:#9d5f54;border-radius:35px 35px 15px 15px}.sofa:before,.sofa:after{content:"";position:absolute;width:75px;height:85px;top:-28px;background:#ad6f62;border-radius:28px}.sofa:before{left:20px}.sofa:after{right:20px}
+.table{position:absolute;right:14%;bottom:17%;width:120px;height:18px;background:#8b633f;border-radius:10px}.table:before,.table:after{content:"";position:absolute;width:10px;height:75px;background:#6f4d31;top:12px}.table:before{left:15px}.table:after{right:15px}
+.character{position:absolute;bottom:12%;width:112px;height:230px;transition:transform .7s cubic-bezier(.22,.8,.3,1),left .8s cubic-bezier(.22,.8,.3,1),right .8s cubic-bezier(.22,.8,.3,1);filter:drop-shadow(0 14px 10px rgba(0,0,0,.16));animation:idle 2.8s ease-in-out infinite}
+.character.left{left:17%}.character.right{right:15%}.character.center{left:50%;transform:translateX(-50%)}
+.character.enterLeft{left:-140px}.character.enterRight{right:-140px}
+@keyframes idle{0%,100%{translate:0 0}50%{translate:0 -4px}}
+.head{position:absolute;left:28px;top:0;width:58px;height:67px;border-radius:46% 46% 42% 42%;background:#d6a06d;border:2px solid rgba(80,50,32,.25);z-index:3}.hair{position:absolute;left:-3px;right:-3px;top:-7px;height:31px;background:#2d2521;border-radius:50% 50% 35% 35%}.hair.long:after{content:"";position:absolute;width:20px;height:55px;background:#2d2521;right:-8px;top:12px;border-radius:0 0 16px 16px}
+.eye{position:absolute;top:30px;width:5px;height:5px;background:#2c2520;border-radius:50%;animation:blink 4.8s infinite}.eye.e1{left:16px}.eye.e2{right:16px}@keyframes blink{0%,45%,49%,100%{transform:scaleY(1)}47%{transform:scaleY(.05)}}
+.mouth{position:absolute;left:22px;bottom:12px;width:16px;height:4px;background:#8a3c3b;border-radius:0 0 12px 12px}.character.speaking .mouth{animation:talk .22s infinite alternate}@keyframes talk{from{height:3px;width:15px}to{height:11px;width:12px;left:24px}}
+.body{position:absolute;left:18px;top:58px;width:78px;height:118px;border-radius:28px 28px 18px 18px;background:#d75a66;border:3px solid rgba(50,40,35,.15)}.body.green{background:#4f8268}.body.blue{background:#397f91}.body.mustard{background:#c6912e}.arm{position:absolute;top:72px;width:24px;height:82px;background:#d6a06d;border-radius:15px;transform-origin:top center}.arm.a1{left:10px;transform:rotate(14deg)}.arm.a2{right:10px;transform:rotate(-14deg)}.character.wave .arm.a2{animation:wave .6s ease-in-out 3}@keyframes wave{0%,100%{transform:rotate(-14deg)}50%{transform:rotate(-65deg)}}
+.leg{position:absolute;top:164px;width:26px;height:64px;background:#31444b;border-radius:0 0 12px 12px}.leg.l1{left:27px}.leg.l2{right:27px}.character.walking .leg.l1{animation:step .35s infinite alternate}.character.walking .leg.l2{animation:step .35s infinite alternate-reverse}@keyframes step{from{transform:rotate(6deg)}to{transform:rotate(-7deg)}}
+.nameTag{position:absolute;left:50%;transform:translateX(-50%);bottom:-34px;background:#fff;border:1px solid var(--line);border-radius:999px;padding:4px 8px;font-size:.76rem;font-weight:900;white-space:nowrap}
+.bubbleBox{position:absolute;left:50%;top:6%;transform:translateX(-50%);width:min(78%,680px);z-index:10;background:#fff;border:3px solid var(--ink);border-radius:20px;padding:14px 18px;box-shadow:var(--shadow);opacity:0;translate:0 -8px;transition:.25s;pointer-events:none}.bubbleBox.show{opacity:1;translate:0 0}.bubbleBox .who{font-size:.75rem;font-weight:950;color:var(--red);text-transform:uppercase}.bubbleBox .ar{font-size:1.55rem;line-height:1.3;font-weight:950;text-align:right;direction:rtl;color:var(--ink)}.bubbleBox .pron{font-weight:850;color:#24777c}.bubbleBox .en{font-size:.93rem;color:#66675f}.bubbleBox:after{content:"";position:absolute;left:50%;bottom:-16px;border:8px solid transparent;border-top-color:var(--ink)}
+.fx{position:absolute;pointer-events:none;z-index:15;font-size:2rem;animation:pop .9s ease forwards}@keyframes pop{0%{scale:.5;opacity:0}40%{scale:1.3;opacity:1}100%{translate:0 -55px;opacity:0}}
+.sceneControls{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}.sceneMeta{font-size:.85rem;color:#69665f;margin-top:8px}
+.side{padding:18px;background:#fffaf0}.panel{background:#fff;border:1px solid var(--line);border-radius:20px;padding:16px;margin-bottom:14px}.panel h3{margin:0 0 9px;color:var(--ink)}
+.choice{display:block;width:100%;padding:11px 12px;border-radius:13px;border:1px solid var(--line);background:#fff;margin:7px 0;text-align:left;cursor:pointer}.choice.correct{background:#e9f6ec;border-color:#63a579}.choice.wrong{background:#fde9ed;border-color:#c96573}
+.feedback{min-height:24px;font-weight:850;margin-top:8px}.culture{background:#edf7ed}.phraseGrid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.phrase{border:1px solid var(--line);border-radius:13px;padding:9px;background:#fff}.phrase .ar{text-align:right;direction:rtl;font-weight:900;color:var(--ink)}.phrase small{display:block;color:#6c6b65}
+.complete{display:flex;justify-content:space-between;align-items:center;gap:10px;background:var(--ink);color:#fff;padding:14px;border-radius:18px}.complete .btn{background:var(--yellow);color:var(--ink)}
+.creatorInfo{display:none;margin-top:8px;padding:9px;background:#fff1bf;border:1px dashed #c9a64c;border-radius:10px;font-size:.8rem}.creator .creatorInfo{display:block}
+.footer{padding:28px 0 44px;text-align:center;color:#747269}
+@media(max-width:950px){.heroGrid,.storyBody{grid-template-columns:1fr}.stageWrap{border-right:0;border-bottom:1px solid var(--line)}.map{grid-template-columns:repeat(4,1fr)}.phraseGrid{grid-template-columns:1fr}}
+@media(max-width:600px){.wrap{width:min(100% - 14px,1180px)}.topin{gap:7px}.progress{width:90px}.heroCopy{padding:20px}.map{grid-template-columns:repeat(2,1fr)}.storyHead{grid-template-columns:60px 1fr}.storyHead .statusText{grid-column:2}.badge{width:58px;height:58px;font-size:1.8rem}.stage{height:430px}.character{scale:.84;transform-origin:bottom center}.character.left{left:7%}.character.right{right:5%}.bubbleBox{width:92%;top:4%}.phraseGrid{grid-template-columns:1fr}.complete{flex-direction:column;align-items:flex-start}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 </style>
 </head>
 <body>
-<header class="top"><div class="wrap topin"><div class="brand">YA <span>HALA!</span> <small>Palestinian Arabic</small></div><div class="stats"><span class="pill">⭐ <b id="xp">0</b> XP</span><span class="pill"><b id="doneCount">0</b>/7 missions</span><div class="bar" aria-label="Course progress"><i id="progress"></i></div></div></div></header>
-<section class="hero"><div class="wrap heroGrid"><div class="heroArt"><div class="kicker">REAL CONVERSATIONS · REAL PEOPLE · REAL PALESTINIAN ARABIC</div><h1>YA HALA!</h1><div class="heroSub">Palestinian Arabic Survival Quest</div><div class="signs"><span class="sign">☕ Cafés</span><span class="sign">🧺 Markets</span><span class="sign">🧭 Directions</span><span class="sign">👥 Friends</span><span class="sign">🍲 Food</span></div></div><div class="heroSide"><div class="card"><h2>Start from zero. Speak from day one.</h2><p>No MSA prerequisite. No alphabet prerequisite. Learn through situations, choices, listening slots, speaking missions, and mini-games.</p><div class="features"><div class="feature">🎯 7 missions</div><div class="feature">💬 Real dialogues</div><div class="feature">🎧 Recording-ready listening</div><div class="feature">🎮 Games + XP</div></div><div class="cta"><button class="btn" id="startBtn">Start Mission 1</button><button class="btn soft" id="creatorBtn">Creator Preview</button></div><div class="creator" id="creatorBox"><b>Creator mode:</b> audio IDs are shown beside phrases. Later, place recordings in <code>audio/</code> using the listed filename.</div></div><div class="card"><h3>🛂 Your Survival Passport</h3><div class="passport" id="passport"></div></div></div></div></section>
-<section class="missionMap"><div class="wrap"><div class="missionTabs" id="tabs"></div></div></section>
-<main class="main"><div class="wrap" id="missions"></div></main>
-<section class="games"><div class="wrap"><div class="card"><h2>🎮 Practice Arcade</h2><p>Short rounds pull phrases from the missions you are learning.</p><div class="gameGrid" id="games"></div></div></div></section>
-<footer class="foot"><div class="wrap">YA HALA! · Palestinian Arabic Survival Quest · Audio recording slots are ready for native recordings.</div></footer>
+<header class="top"><div class="wrap topin"><div class="brand">YA <span>HALA!</span></div><div class="spacer"></div><span class="pill">⭐ <b id="xp">0</b> XP</span><span class="pill"><b id="doneCount">0</b>/7</span><div class="progress"><i id="progress"></i></div></div></header>
+
+<section class="hero">
+<div class="wrap heroGrid">
+  <div class="heroCopy">
+    <div class="kicker">ANIMATED PALESTINIAN ARABIC STORY</div>
+    <h1>Make the <em>characters</em> teach you.</h1>
+    <p class="lead">Follow Lina through cafés, markets, streets, homes, and real conversations. Characters move, react, speak through animated dialogue, and later use your own Palestinian recordings.</p>
+    <div class="actions">
+      <button class="btn yellow" id="startBtn">▶ Start the story</button>
+      <button class="btn light" id="creatorBtn">Creator Preview</button>
+    </div>
+  </div>
+  <div class="introPanel">
+    <div class="mini"><b>🎭 Characters are alive</b> walking entrances, blinking, waving, talking mouths, and reactions.</div>
+    <div class="mini"><b>🎧 Audio-ready</b> each dialogue line already points to a future MP3 filename.</div>
+    <div class="mini"><b>🧭 One continuous story</b> missions feel like chapters of the same day, not unrelated worksheets.</div>
+    <div class="mini"><b>🎮 Interactive choices</b> the learner answers inside the scene, not below a static picture.</div>
+  </div>
+</div>
+</section>
+
+<section class="mapWrap"><div class="wrap"><div class="map" id="missionMap"></div></div></section>
+
+<main class="gameArea"><div class="wrap">
+  <section class="storyCard">
+    <div class="storyHead">
+      <div class="badge" id="missionIcon">☕</div>
+      <div><div class="kicker" id="missionLabel">MISSION 1</div><h2 id="missionTitle">The Café</h2><p id="missionIntro"></p></div>
+      <div class="statusText" id="sceneStatus">Scene ready</div>
+    </div>
+    <div class="storyBody">
+      <div class="stageWrap">
+        <div class="stage" id="stage">
+          <div class="sun"></div><div class="cloud"></div><div class="buildings"><div class="building b1"></div><div class="building b2"><div class="arch"></div></div><div class="building b3"></div></div><div class="road"></div>
+          <div id="sceneProps"></div>
+          <div class="bubbleBox" id="bubble"><div class="who" id="bubbleWho"></div><div class="ar" id="bubbleAr"></div><div class="pron" id="bubblePron"></div><div class="en" id="bubbleEn"></div></div>
+          <div id="charA"></div><div id="charB"></div>
+        </div>
+        <div class="sceneControls">
+          <button class="btn yellow" id="playScene">▶ Play scene</button>
+          <button class="btn light" id="nextLine">Next line</button>
+          <button class="btn light" id="replayLine">Replay line</button>
+        </div>
+        <div class="sceneMeta" id="audioNote">Audio is optional for now. The animation works even before recordings are added.</div>
+        <div class="creatorInfo" id="creatorInfo"></div>
+      </div>
+      <aside class="side">
+        <div class="panel" id="challengePanel"><h3>🎯 Your turn</h3><p id="challengePrompt"></p><div id="choices"></div><div class="feedback" id="feedback"></div></div>
+        <div class="panel culture"><h3>🌿 Culture moment</h3><p id="cultureText"></p></div>
+        <div class="panel"><h3>🗣 Phrase pocket</h3><div class="phraseGrid" id="phraseGrid"></div></div>
+        <div class="complete"><div><b id="rewardTitle">Unlock the badge</b><div id="rewardSub">Finish the mission to continue the story.</div></div><button class="btn" id="completeBtn">Complete mission</button></div>
+      </aside>
+    </div>
+  </section>
+</div></main>
+
+<footer class="footer"><div class="wrap">YA HALA! · Animated Palestinian Arabic Story Adventure</div></footer>
+
 <script>
 const missions=[
-{id:1,icon:"☕",title:"The Café",sub:"Order, greet, and survive your first café conversation.",culture:"Coffee is social. A short greeting before ordering feels warmer and more natural than jumping straight to the order.",phrases:[
-["أهلا وسهلا","Ahlan w sahlan","Welcome!"],["شو بتحب تشرب؟","Shu btihebb tishrab?","What would you like to drink?"],["بدي قهوة، لو سمحت","Biddi ahwe, law samaht","I'd like a coffee, please."],["بدي شاي","Biddi shay","I'd like tea."],["يسلمو","Yislamo","Thanks / very kind of you."],["سكر شوي","Sukkar shway","A little sugar."],["بدون سكر","Bidun sukkar","Without sugar."],["الحساب لو سمحت","Il-hisab law samaht","The bill, please."]],dialogue:[["owner","أهلا وسهلا!","Ahlan w sahlan!"],["owner","شو بتحب تشرب؟","Shu btihebb tishrab?"],["me","بدي قهوة، لو سمحت","Biddi ahwe, law samaht."]],q:"The café owner asks شو بتحب تشرب؟ What is the best answer?",opts:["بدي قهوة، لو سمحت","وين السوق؟","أنا من فلسطين"],correct:0,speak:"Order your favorite drink out loud using بدي … لو سمحت."},
-{id:2,icon:"🧺",title:"The Market",sub:"Ask prices, quantities, and react naturally.",culture:"Friendly bargaining can happen in some markets, but tone matters. Smile, stay polite, and treat it as conversation, not combat.",phrases:[
-["كم هادا؟","Kam hada?","How much is this?"],["غالي شوي","Ghali shway","A bit expensive."],["رخيص","Rkhis","Cheap."],["بدي كيلو","Biddi kilo","I want one kilo."],["عندك زيتون؟","'Indak zaytun?","Do you have olives?"],["طيب، خليه","Tayyib, khallih","Okay, leave it / never mind."],["تمام","Tamam","Great / okay."],["يعطيك العافية","Ya'tik il-'afye","May God give you strength / thanks for your work."]],dialogue:[["me","كم هادا؟","Kam hada?"],["seller","عشرة شواقل","'Ashara shawaqel."],["me","غالي شوي","Ghali shway."]],q:"You think the price is a little high. What do you say?",opts:["غالي شوي","مباشرة","ما بفهم"],correct:0,speak:"Point to three imaginary items and ask كم هادا؟ each time."},
-{id:3,icon:"🧭",title:"Getting Around",sub:"Ask for places, directions, and transport.",culture:"People often give directions using landmarks. Listen for يمين, شمال, مباشرة and place names.",phrases:[
-["وين …؟","Wen …?","Where is …?"],["كيف أروح على …؟","Keef aruh 'ala …?","How do I get to …?"],["على اليمين","'Al-yameen","On the right."],["على الشمال","'Ash-shmal","On the left."],["مباشرة","Mubashara","Straight ahead."],["قريب؟","Qareeb?","Is it close?"],["بعيد؟","Ba'eed?","Is it far?"],["وين محطة الباص؟","Wen mahattat il-bas?","Where is the bus station?"]],dialogue:[["me","وين محطة الباص؟","Wen mahattat il-bas?"],["local","مباشرة، بعدين على اليمين","Mubashara, ba'dein 'al-yameen."],["me","يسلمو","Yislamo."]],q:"Someone says مباشرة، بعدين على اليمين. What do you do?",opts:["Go straight, then right","Turn left immediately","Ask for coffee"],correct:0,speak:"Ask how to get to a place you know: كيف أروح على …؟"},
-{id:4,icon:"💬",title:"Real Reactions",sub:"Sound human: surprise, agreement, hesitation, and relief.",culture:"Reaction words carry a lot of personality. Their meaning changes with tone, so hearing them later in your recordings will be especially useful.",phrases:[
-["عنجد؟","'Anjad?","Really?"],["معقول؟","Ma'qul?","Seriously? / Is that possible?"],["أكيد","Akeed","Of course."],["ولا يهمك","Wala yhimmak","Don't worry about it."],["عادي","'Adi","It's fine / normal."],["خلص","Khalas","Enough / done / okay."],["مش مشكلة","Mish mushkile","No problem."],["يا زلمة!","Ya zalame!","Man! / Come on! (to a man)"]],dialogue:[["friend","نسيت تلفوني بالبيت","Nseet تلفوني bil-bet."],["me","عنجد؟","'Anjad?"],["friend","آه","Ah."],["me","ولا يهمك","Wala yhimmak."]],q:"Your friend apologizes for something small. Which reply is reassuring?",opts:["ولا يهمك","غالي شوي","وين الباص؟"],correct:0,speak:"Say عنجد؟ three ways: surprised, skeptical, and amused."},
-{id:5,icon:"🏠",title:"At a Palestinian Home",sub:"Hospitality, offers, family, and being a good guest.",culture:"You may be offered food or drink more than once. A polite refusal may be followed by another offer; that persistence can be part of hospitality.",phrases:[
-["تفضل / تفضلي","Tfaddal / tfaddali","Please / come in / here you go."],["نورت / نورتي","Nawwart / nawwarti","Lovely to have you here."],["صحتين","Sahtain","Enjoy / bon appétit."],["يسلم إيديك","Yislam ideik","Bless your hands / delicious, thank you."],["شبعت","Shbi't","I'm full."],["كمان شوي؟","Kaman shway?","A little more?"],["لا، يسلمو","La, yislamo","No, thank you."],["الله يخليك","Allah ykhallik","Thank you / may God keep you."]],dialogue:[["host","كمان شوي؟","Kaman shway?"],["me","لا، يسلمو. شبعت","La, yislamo. Shbi't."],["host","صحتين","Sahtain."]],q:"You are full and want to refuse more food politely. What fits best?",opts:["لا، يسلمو. شبعت","كم هادا؟","على الشمال"],correct:0,speak:"Practice accepting once and politely refusing once."},
-{id:6,icon:"🛟",title:"Conversation Rescue",sub:"When you do not understand: slow down, repeat, recover.",culture:"You do not need perfect Arabic to keep a conversation alive. Repair phrases are a superpower.",phrases:[
-["مش فاهم / فاهمة","Mish fahim / fahme","I don't understand."],["احكي شوي شوي","Ihki shway shway","Speak slowly."],["ممكن تعيد؟","Mumkin t'eed?","Can you repeat?"],["شو يعني؟","Shu ya'ni?","What does that mean?"],["كيف بنحكي …؟","Keef binhki …?","How do we say …?"],["فهمت","Fhimt","I understood."],["استنى شوي","Istanna shway","Wait a little."],["هيني بحاول","Haini bahawel","I'm trying / here I am trying."]],dialogue:[["local","… بسرعة كبيرة …","… fast speech …"],["me","ممكن تعيد؟ احكي شوي شوي","Mumkin t'eed? Ihki shway shway."],["local","أكيد","Akeed."]],q:"You lost the conversation completely. What is the most useful response?",opts:["ممكن تعيد؟ احكي شوي شوي","صحتين","غالي شوي"],correct:0,speak:"Say مش فاهمة، ممكن تعيد؟ if you are speaking as a woman."},
-{id:7,icon:"⭐",title:"Final Quest",sub:"Mix everything into one real mini-conversation.",culture:"The goal is not to remember every line. It is to combine a few flexible patterns confidently and recover when needed.",phrases:[
-["مرحبا، كيفك؟","Marhaba, keefak/keefik?","Hi, how are you?"],["أنا منيح / منيحة","Ana mnih / mniha","I'm good."],["بدي …","Biddi …","I want …"],["وين …؟","Wen …?","Where is …?"],["عنجد؟","'Anjad?","Really?"],["ولا يهمك","Wala yhimmak","Don't worry."],["ممكن تعيد؟","Mumkin t'eed?","Can you repeat?"],["يسلمو، يعطيك العافية","Yislamo, ya'tik il-'afye","Thanks, appreciate it."]],dialogue:[["local","مرحبا، كيفك؟","Marhaba, keefik?"],["me","منيحة الحمد لله","Mniha, il-hamdu lillah."],["local","شو بدك؟","Shu biddik?"],["me","بدي قهوة، لو سمحت","Biddi ahwe, law samaht."]],q:"Final boss: the speaker talks too fast. What keeps the conversation going?",opts:["ممكن تعيد؟ احكي شوي شوي","خلص","غالي شوي"],correct:0,speak:"Build a 60–90 second conversation using greeting + request + reaction + rescue phrase + thanks."}
+{id:1,icon:"☕",title:"The Café",intro:"Lina has just arrived. Her first stop is a small café, where Abu Sami welcomes her.",scene:"cafe",a:{name:"Abu Sami",look:"mustard",side:"left",emoji:"☕"},b:{name:"Lina",look:"red",side:"right",emoji:"🌿"},lines:[
+{speaker:"Abu Sami",ar:"أهلاً وسهلاً!",pron:"Ahlan w sahlan!",en:"Welcome!",fx:"👋"},
+{speaker:"Abu Sami",ar:"شو بتحب تشرب؟",pron:"Shu btihebb tishrab?",en:"What would you like to drink?"},
+{speaker:"Lina",ar:"بدي قهوة، لو سمحت.",pron:"Biddi ahwe, law samaht.",en:"I'd like a coffee, please."},
+{speaker:"Abu Sami",ar:"تكرمي.",pron:"Tikrami.",en:"Here you go.",fx:"☕"}],
+challenge:{prompt:"Abu Sami asks: شو بتحب تشرب؟",options:["بدي قهوة، لو سمحت","وين السوق؟","أنا من فلسطين"],answer:0},
+culture:"A short greeting before ordering feels warmer and more natural than jumping straight to the order.",
+phrases:[["أهلاً وسهلاً","Welcome"],["بدي قهوة","I want coffee"],["يسلمو","Thanks"],["الحساب لو سمحت","The bill, please"]],badge:"Café Explorer"},
+{id:2,icon:"🧺",title:"The Market",intro:"Lina walks into a lively market and meets Um Nidal at a fruit and vegetable stall.",scene:"market",a:{name:"Um Nidal",look:"green",side:"left",emoji:"🧺"},b:{name:"Lina",look:"red",side:"right",emoji:"🌿"},lines:[
+{speaker:"Lina",ar:"كم هادا؟",pron:"Kam hada?",en:"How much is this?"},
+{speaker:"Um Nidal",ar:"عشرة شواقل.",pron:"'Ashara shawaqel.",en:"Ten shekels."},
+{speaker:"Lina",ar:"غالي شوي.",pron:"Ghali shway.",en:"A bit expensive.",fx:"😅"},
+{speaker:"Um Nidal",ar:"طيب، بثمانية.",pron:"Tayyib, b-thamanye.",en:"Okay, for eight.",fx:"🤝"}],
+challenge:{prompt:"The price is a little high. What do you say?",options:["غالي شوي","صحتين","وين الباص؟"],answer:0},
+culture:"A friendly little bargain can be part of the market conversation. Tone matters more than the words.",
+phrases:[["كم هادا؟","How much is this?"],["غالي شوي","A bit expensive"],["بدي كيلو","I want one kilo"],["يعطيك العافية","Thanks for your work"]],badge:"Market Explorer"},
+{id:3,icon:"🧭",title:"Getting Around",intro:"After shopping, Lina needs the bus station. Youssef notices she looks lost.",scene:"street",a:{name:"Youssef",look:"blue",side:"left",emoji:"🧭"},b:{name:"Lina",look:"red",side:"right",emoji:"🌿"},lines:[
+{speaker:"Lina",ar:"وين محطة الباص؟",pron:"Wen mahattat il-bas?",en:"Where is the bus station?"},
+{speaker:"Youssef",ar:"مباشرة، بعدين عاليمين.",pron:"Mubashara, ba'dein 'al-yameen.",en:"Straight ahead, then right.",fx:"➡️"},
+{speaker:"Lina",ar:"قريب؟",pron:"Qareeb?",en:"Is it close?"},
+{speaker:"Youssef",ar:"آه، قريب.",pron:"Ah, qareeb.",en:"Yes, it's close."}],
+challenge:{prompt:"You hear: مباشرة، بعدين عاليمين. What do you do?",options:["Go straight, then right","Turn left immediately","Order tea"],answer:0},
+culture:"Directions are often given with landmarks and gestures, so listen for يمين, شمال, and مباشرة.",
+phrases:[["وين ...؟","Where is ...?"],["على اليمين","On the right"],["على الشمال","On the left"],["مباشرة","Straight ahead"]],badge:"Transport Hero"},
+{id:4,icon:"💬",title:"Real Reactions",intro:"Lina is starting to sound less like a phrasebook and more like a person.",scene:"street",a:{name:"Youssef",look:"blue",side:"left",emoji:"🧭"},b:{name:"Lina",look:"red",side:"right",emoji:"🌿"},lines:[
+{speaker:"Youssef",ar:"اليوم السوق زحمة كتير!",pron:"Il-yom is-souq zahme kteer!",en:"The market is very crowded today!"},
+{speaker:"Lina",ar:"عنجد؟",pron:"'Anjad?",en:"Really?",fx:"😮"},
+{speaker:"Youssef",ar:"آه، بس عادي.",pron:"Ah, bas 'adi.",en:"Yeah, but it's fine."},
+{speaker:"Lina",ar:"ولا يهمك.",pron:"Wala yhimmak.",en:"No worries.",fx:"🙂"}],
+challenge:{prompt:"Your friend apologizes for something small. What sounds natural?",options:["ولا يهمك","غالي شوي","الحساب لو سمحت"],answer:0},
+culture:"Reaction words carry personality. Later, your audio recordings will be especially useful here because tone changes meaning.",
+phrases:[["عنجد؟","Really?"],["معقول؟","Seriously?"],["عادي","It's fine"],["ولا يهمك","Don't worry"]],badge:"Brave Speaker"},
+{id:5,icon:"🏠",title:"At a Palestinian Home",intro:"Mariam invites Lina home. This mission is all about hospitality and being a good guest.",scene:"home",a:{name:"Mariam",look:"green",side:"left",emoji:"🏠"},b:{name:"Lina",look:"red",side:"right",emoji:"🌿"},lines:[
+{speaker:"Mariam",ar:"تفضلي! نورتينا.",pron:"Tfaddali! Nawwarteena.",en:"Come in! Lovely to have you here.",fx:"✨"},
+{speaker:"Mariam",ar:"كمان شوي؟",pron:"Kaman shway?",en:"A little more?"},
+{speaker:"Lina",ar:"لا، يسلمو. شبعت.",pron:"La, yislamo. Shbi't.",en:"No, thank you. I'm full."},
+{speaker:"Mariam",ar:"صحتين!",pron:"Sahtain!",en:"Enjoy!",fx:"🍲"}],
+challenge:{prompt:"You loved the food. What do you say to the cook?",options:["يسلم إيديك","وين السوق؟","مباشرة"],answer:0},
+culture:"A guest may be offered more food more than once. Warm insistence can be part of hospitality.",
+phrases:[["تفضلي","Come in / please"],["صحتين","Enjoy"],["يسلم إيديك","Bless your hands"],["شبعت","I'm full"]],badge:"Warm Guest"},
+{id:6,icon:"🛟",title:"Conversation Rescue",intro:"Two people start talking too fast. Lina needs to keep the conversation alive.",scene:"street",a:{name:"Local",look:"mustard",side:"left",emoji:"🗣️"},b:{name:"Lina",look:"red",side:"right",emoji:"🌿"},lines:[
+{speaker:"Local",ar:"...",pron:"[fast speech]",en:"[fast speech]"},
+{speaker:"Lina",ar:"ممكن تعيد؟",pron:"Mumkin t'eed?",en:"Can you repeat?",fx:"✋"},
+{speaker:"Lina",ar:"احكي شوي شوي.",pron:"Ihki shway shway.",en:"Speak slowly."},
+{speaker:"Local",ar:"أكيد.",pron:"Akeed.",en:"Of course.",fx:"👍"}],
+challenge:{prompt:"Someone speaks too quickly. What's your rescue phrase?",options:["احكي شوي شوي","صحتين","غالي شوي"],answer:0},
+culture:"Repair phrases are a superpower. They keep you inside the conversation instead of making you give up.",
+phrases:[["ممكن تعيد؟","Can you repeat?"],["احكي شوي شوي","Speak slowly"],["شو يعني؟","What does that mean?"],["فهمت","I understood"]],badge:"Conversation Rescuer"},
+{id:7,icon:"⭐",title:"Final Quest",intro:"One final mini-adventure: greeting, ordering, directions, reactions, and recovery in one conversation.",scene:"sunset",a:{name:"New Friend",look:"blue",side:"left",emoji:"⭐"},b:{name:"Lina",look:"red",side:"right",emoji:"🌿"},lines:[
+{speaker:"New Friend",ar:"مرحبا، كيفك؟",pron:"Marhaba, keefik?",en:"Hi, how are you?",fx:"👋"},
+{speaker:"Lina",ar:"منيحة الحمد لله.",pron:"Mniha, il-hamdu lillah.",en:"I'm good, thank God."},
+{speaker:"New Friend",ar:"شو بدك؟",pron:"Shu biddik?",en:"What do you want?"},
+{speaker:"Lina",ar:"بدي مي، لو سمحت.",pron:"Biddi mayy, law samaht.",en:"I'd like water, please.",fx:"💧"}],
+challenge:{prompt:"The speaker suddenly goes too fast. What keeps the conversation going?",options:["ممكن تعيد؟ احكي شوي شوي","غالي شوي","يسلم إيديك"],answer:0},
+culture:"The goal isn't perfection. It's connection: understand enough, respond naturally, and keep going.",
+phrases:[["مرحبا، كيفك؟","Hi, how are you?"],["بدي ...","I want ..."],["وين ...؟","Where is ...?"],["ممكن تعيد؟","Can you repeat?"]],badge:"Local Connector"}
 ];
-let state={done:new Set(JSON.parse(localStorage.getItem("yah_done")||"[]")),xp:Number(localStorage.getItem("yah_xp")||0),active:1,creator:false};
+
+let state={active:Number(localStorage.getItem("yah_alive_active")||1),xp:Number(localStorage.getItem("yah_alive_xp")||0),done:new Set(JSON.parse(localStorage.getItem("yah_alive_done")||"[]")),creator:localStorage.getItem("yah_alive_creator")==="1",line:0,playing:false,timer:null};
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
-function audioId(mid,idx,type="P"){return "M"+String(mid).padStart(2,"0")+"_"+type+String(idx+1).padStart(2,"0")+".mp3"}
-function playAudio(file,btn){const a=new Audio("audio/"+file);btn.disabled=true;const old=btn.textContent;btn.textContent="…";a.play().then(()=>{btn.textContent="❚❚"}).catch(()=>{btn.textContent="🎙";const s=btn.closest(".phrase")?.querySelector(".audioStatus");if(s)s.textContent="Recording slot ready: "+file;}).finally(()=>setTimeout(()=>{btn.disabled=false;btn.textContent=old},900));}
-function renderTabs(){const t=$("#tabs");t.innerHTML=missions.map(m=>'<button class="mtab '+(m.id===state.active?'active ':'')+(state.done.has(m.id)?'done':'')+'" data-mid="'+m.id+'"><strong>'+m.icon+' Mission '+m.id+'</strong><small>'+m.title+'</small></button>').join("");t.querySelectorAll("button").forEach(b=>b.addEventListener("click",()=>showMission(+b.dataset.mid)));}
-function renderPassport(){const p=$("#passport");p.innerHTML=missions.map(m=>'<div class="stamp '+(state.done.has(m.id)?'done':'')+'">'+(state.done.has(m.id)?'✓ ':'')+m.icon+'<br>'+m.title+'</div>').join("")}
-function renderMissions(){const root=$("#missions");root.innerHTML=missions.map(m=>'<section class="mission '+(m.id===state.active?'active':'')+'" id="mission-'+m.id+'"><div class="missionHead"><div class="badge">'+m.icon+'</div><div class="missionTitle"><div class="kicker">MISSION '+m.id+'</div><h2>'+m.title+'</h2><p>'+m.sub+'</p></div></div><div class="grid2"><div class="card"><h3 class="sectionTitle">🗣 Useful phrases</h3><div class="phraseList">'+m.phrases.map((p,i)=>'<div class="phrase"><button class="play" aria-label="Play future recording" data-file="'+audioId(m.id,i)+'">▶</button><div><div class="ar" lang="ar">'+p[0]+'</div><div class="roman">'+p[1]+'</div><div class="eng shortMeaning">'+p[2]+'</div><div class="audioStatus">'+(state.creator?audioId(m.id,i):'')+'</div></div><button class="reveal">Meaning</button></div>').join("")+'</div></div><div><div class="card"><h3 class="sectionTitle">💬 Real-life dialogue</h3><div class="dialogue">'+m.dialogue.map((d,i)=>'<div class="bubble '+(d[0]==='me'?'me':'')+'"><div class="ar" lang="ar">'+d[1]+'</div><div class="roman">'+d[2]+'</div>'+(state.creator?'<div class="audioStatus">'+audioId(m.id,i,"D")+'</div>':'')+'</div>').join("")+'</div></div><div class="callout culture" style="margin-top:14px"><b>🌿 Cultural note</b><p>'+m.culture+'</p></div><div class="callout challenge" style="margin-top:14px"><b>🎯 Choose your response</b><p>'+m.q+'</p><div class="choices">'+m.opts.map((o,i)=>'<button class="choice" data-mid="'+m.id+'" data-i="'+i+'">'+o+'</button>').join("")+'</div><div class="status" id="status-'+m.id+'" aria-live="polite"></div></div><div class="callout listen" style="margin-top:14px"><b>🎧 Listening lab</b><p>Recording-ready exercise. When audio is added, listen first without reading, then choose or repeat what you heard.</p><button class="btn soft listenBtn" data-file="'+audioId(m.id,0,"L")+'">▶ Listen slot</button><div class="audioStatus">'+(state.creator?audioId(m.id,0,"L"):'Audio will be added later.')+'</div></div><div class="callout speak" style="margin-top:14px"><b>🎙 Speaking mission</b><p>'+m.speak+'</p></div></div></div><div class="completeRow"><span><b>Mission reward:</b> +50 XP and a passport stamp.</span><button class="btn completeBtn" data-mid="'+m.id+'">'+(state.done.has(m.id)?'✓ Mission complete':'Complete mission')+'</button></div></section>').join("");
-root.querySelectorAll(".reveal").forEach(b=>b.addEventListener("click",()=>b.closest(".phrase").classList.toggle("open")));
-root.querySelectorAll(".play").forEach(b=>b.addEventListener("click",()=>playAudio(b.dataset.file,b)));
-root.querySelectorAll(".listenBtn").forEach(b=>b.addEventListener("click",()=>playAudio(b.dataset.file,b)));
-root.querySelectorAll(".choice").forEach(b=>b.addEventListener("click",()=>answerChoice(b)));
-root.querySelectorAll(".completeBtn").forEach(b=>b.addEventListener("click",()=>completeMission(+b.dataset.mid)));
+function save(){localStorage.setItem("yah_alive_active",state.active);localStorage.setItem("yah_alive_xp",state.xp);localStorage.setItem("yah_alive_done",JSON.stringify([...state.done]));localStorage.setItem("yah_alive_creator",state.creator?"1":"0")}
+function audioName(mid,i){return "M"+String(mid).padStart(2,"0")+"_D"+String(i+1).padStart(2,"0")+".mp3"}
+function charHTML(c,id){
+  const hair=c.name==="Lina"||c.name==="Mariam"||c.name==="Um Nidal"?"hair long":"hair";
+  return '<div class="character '+c.side+' enter'+(c.side==="left"?"Left":"Right")+'" id="'+id+'"><div class="head"><div class="'+hair+'"></div><span class="eye e1"></span><span class="eye e2"></span><span class="mouth"></span></div><div class="body '+c.look+'"></div><span class="arm a1"></span><span class="arm a2"></span><span class="leg l1"></span><span class="leg l2"></span><div class="nameTag">'+c.emoji+' '+c.name+'</div></div>'
 }
-function answerChoice(b){const m=missions[b.dataset.mid-1], box=b.parentElement, i=+b.dataset.i;box.querySelectorAll(".choice").forEach(x=>x.disabled=true);b.classList.add(i===m.correct?"correct":"wrong");if(i!==m.correct)box.children[m.correct].classList.add("correct");$("#status-"+m.id).textContent=i===m.correct?"✓ Nice! +10 XP":"Almost — the highlighted answer fits best.";if(i===m.correct){state.xp+=10;save();updateStats()}}
-function completeMission(id){if(!state.done.has(id)){state.done.add(id);state.xp+=50;save()}if(id<7)state.active=id+1;renderAll();document.querySelector("#mission-"+state.active)?.scrollIntoView({behavior:"smooth",block:"start"})}
-function showMission(id){state.active=id;renderTabs();$$(".mission").forEach(x=>x.classList.remove("active"));$("#mission-"+id).classList.add("active");$("#mission-"+id).scrollIntoView({behavior:"smooth",block:"start"})}
-function save(){localStorage.setItem("yah_done",JSON.stringify([...state.done]));localStorage.setItem("yah_xp",String(state.xp))}
+function sceneProps(scene){
+  if(scene==="cafe") return '<div class="awning"></div><div class="counter"></div><div class="tree"></div><div class="sign">قهوة</div>';
+  if(scene==="market") return '<div class="marketStall"></div><div class="tree"></div><div class="sign">السوق</div>';
+  if(scene==="home") return '<div class="sofa"></div><div class="table"></div><div class="tree"></div>';
+  if(scene==="sunset") return '<div class="tree"></div><div class="sign">YA HALA!</div>';
+  return '<div class="tree"></div><div class="sign">محطة الباص →</div>';
+}
+function stageClass(scene){return scene==="home"?"stage home":scene==="sunset"?"stage sunset":"stage"}
+function setMission(id){
+  clearTimeout(state.timer);state.playing=false;state.active=id;state.line=0;save();
+  const m=missions[id-1];
+  $("#missionIcon").textContent=m.icon;$("#missionLabel").textContent="MISSION "+m.id;$("#missionTitle").textContent=m.title;$("#missionIntro").textContent=m.intro;$("#sceneStatus").textContent="Scene ready";
+  const stage=$("#stage");stage.className=stageClass(m.scene);
+  stage.innerHTML='<div class="sun"></div><div class="cloud"></div><div class="buildings"><div class="building b1"></div><div class="building b2"><div class="arch"></div></div><div class="building b3"></div></div><div class="road"></div>'+sceneProps(m.scene)+'<div class="bubbleBox" id="bubble"><div class="who" id="bubbleWho"></div><div class="ar" id="bubbleAr"></div><div class="pron" id="bubblePron"></div><div class="en" id="bubbleEn"></div></div>'+charHTML(m.a,"charA")+charHTML(m.b,"charB");
+  requestAnimationFrame(()=>setTimeout(()=>{$("#charA").classList.remove("enterLeft","enterRight");$("#charB").classList.remove("enterLeft","enterRight");$("#charA").classList.add("walking");$("#charB").classList.add("walking");setTimeout(()=>{$("#charA").classList.remove("walking");$("#charB").classList.remove("walking")},700)},50));
+  $("#challengePrompt").textContent=m.challenge.prompt;$("#choices").innerHTML=m.challenge.options.map((o,i)=>'<button class="choice" data-choice="'+i+'">'+o+'</button>').join("");$("#feedback").textContent="";
+  $$("#choices .choice").forEach(b=>b.onclick=()=>answerChoice(Number(b.dataset.choice)));
+  $("#cultureText").textContent=m.culture;$("#phraseGrid").innerHTML=m.phrases.map(p=>'<div class="phrase"><div class="ar">'+p[0]+'</div><small>'+p[1]+'</small></div>').join("");
+  $("#rewardTitle").textContent="Unlock: "+m.badge;$("#completeBtn").textContent=state.done.has(id)?"✓ Completed":"Complete mission";
+  $("#creatorInfo").innerHTML=m.lines.map((l,i)=>'<div>'+audioName(m.id,i)+' — '+l.speaker+': '+l.ar+'</div>').join("");
+  renderMap();updateStats();document.body.classList.toggle("creator",state.creator)
+}
+function lineSpeaker(m,line){return line.speaker===m.a.name?$("#charA"):$("#charB")}
+function showLine(i,auto=false){
+  const m=missions[state.active-1];if(i>=m.lines.length){endScene();return}
+  state.line=i;const line=m.lines[i],speaker=lineSpeaker(m,line),other=speaker.id==="charA"?$("#charB"):$("#charA");
+  $$(".character").forEach(c=>c.classList.remove("speaking","wave"));speaker.classList.add("speaking");if(line.fx==="👋")speaker.classList.add("wave");
+  $("#bubbleWho").textContent=line.speaker;$("#bubbleAr").textContent=line.ar;$("#bubblePron").textContent=line.pron;$("#bubbleEn").textContent=line.en;$("#bubble").classList.add("show");$("#sceneStatus").textContent="Line "+(i+1)+" of "+m.lines.length;
+  if(line.fx)spawnFx(line.fx,speaker);
+  const file=audioName(m.id,i),audio=new Audio("audio/"+file);let usedAudio=false;
+  audio.onplay=()=>{usedAudio=true;$("#audioNote").textContent="Playing "+file};
+  audio.onended=()=>{speaker.classList.remove("speaking");if(auto)scheduleNext(350)};
+  audio.onerror=()=>{};
+  audio.play().catch(()=>{speaker.classList.add("speaking");setTimeout(()=>speaker.classList.remove("speaking"),1500);if(auto)scheduleNext(1900)});
+  save();
+}
+function scheduleNext(ms){clearTimeout(state.timer);state.timer=setTimeout(()=>{state.line++;showLine(state.line,true)},ms)}
+function playScene(){clearTimeout(state.timer);state.playing=true;showLine(0,true);$("#playScene").textContent="Playing…"}
+function endScene(){state.playing=false;$("#playScene").textContent="▶ Play scene";$("#sceneStatus").textContent="Scene complete";$$(".character").forEach(c=>c.classList.remove("speaking"));$("#bubble").classList.remove("show")}
+function spawnFx(txt,charEl){const r=charEl.getBoundingClientRect(),s=$("#stage").getBoundingClientRect(),el=document.createElement("div");el.className="fx";el.textContent=txt;el.style.left=(r.left-s.left+40)+"px";el.style.top=(r.top-s.top+20)+"px";$("#stage").appendChild(el);setTimeout(()=>el.remove(),900)}
+function answerChoice(i){const m=missions[state.active-1];$$("#choices .choice").forEach(b=>b.classList.remove("correct","wrong"));const btn=$$("#choices .choice")[i];if(i===m.challenge.answer){btn.classList.add("correct");$("#feedback").textContent="✓ Nice — that fits the scene.";state.xp+=10;spawnFx("✨",$("#charB"))}else{btn.classList.add("wrong");$("#feedback").textContent="Try another reply."}save();updateStats()}
+function completeMission(){const id=state.active;if(!state.done.has(id)){state.done.add(id);state.xp+=50;save()}renderMap();updateStats();$("#completeBtn").textContent="✓ Completed";if(id<7)setTimeout(()=>{setMission(id+1);document.querySelector(".storyCard").scrollIntoView({behavior:"smooth",block:"start"})},450)}
+function renderMap(){$("#missionMap").innerHTML=missions.map(m=>'<button class="mBtn '+(state.active===m.id?"active ":"")+(state.done.has(m.id)?"done":"")+'" data-mid="'+m.id+'">'+(state.done.has(m.id)?"✓ ":"")+m.icon+'<br>Mission '+m.id+'<small>'+m.title+'</small></button>').join("");$$("#missionMap .mBtn").forEach(b=>b.onclick=()=>setMission(Number(b.dataset.mid)))}
 function updateStats(){$("#xp").textContent=state.xp;$("#doneCount").textContent=state.done.size;$("#progress").style.width=(state.done.size/7*100)+"%"}
-function renderGames(){const pool=missions.flatMap(m=>m.phrases.map(p=>({a:p[0],r:p[1],e:p[2]})));const picks=[pool[2],pool[16],pool[35]];$("#games").innerHTML=picks.map((q,gi)=>{const wrong=pool.filter(x=>x!==q).slice(gi*2,gi*2+2);const opts=[q,...wrong].sort((a,b)=>a.e.localeCompare(b.e));return '<div class="callout"><b>'+(gi===0?'⚡ Rapid Response':gi===1?'🧩 Phrase Match':'🏗 Build Meaning')+'</b><div class="gameQ ar" lang="ar">'+q.a+'</div><div class="roman">'+q.r+'</div><div class="gameOpts">'+opts.map(o=>'<button class="gameOpt" data-ok="'+(o.e===q.e?'1':'0')+'">'+o.e+'</button>').join("")+'</div><div class="status"></div></div>'}).join("");$("#games").querySelectorAll(".gameOpt").forEach(b=>b.addEventListener("click",()=>{const parent=b.closest(".callout"),status=parent.querySelector(".status");if(b.dataset.ok==="1"){b.classList.add("correct");status.textContent="✓ Correct! +5 XP";state.xp+=5;save();updateStats()}else{b.classList.add("wrong");status.textContent="Try again."}}))}
-function renderAll(){renderTabs();renderPassport();renderMissions();renderGames();updateStats()}
-$("#startBtn").addEventListener("click",()=>showMission(1));$("#creatorBtn").addEventListener("click",()=>{state.creator=!state.creator;$("#creatorBox").classList.toggle("on",state.creator);renderMissions()});renderAll();
+$("#startBtn").onclick=()=>{setMission(1);document.querySelector(".storyCard").scrollIntoView({behavior:"smooth",block:"start"})};
+$("#creatorBtn").onclick=()=>{state.creator=!state.creator;save();document.body.classList.toggle("creator",state.creator)};
+$("#playScene").onclick=playScene;
+$("#nextLine").onclick=()=>{clearTimeout(state.timer);state.playing=false;showLine(Math.min(state.line+1,missions[state.active-1].lines.length-1),false)};
+$("#replayLine").onclick=()=>showLine(state.line,false);
+$("#completeBtn").onclick=completeMission;
+setMission(state.active);document.body.classList.toggle("creator",state.creator);
 </script>
-</body></html>
+</body>
+</html>
