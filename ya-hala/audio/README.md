@@ -1,0 +1,1 @@
+# YA HALA audio\n\nPlace native Palestinian Arabic recordings here using the filenames shown in Creator Preview, for example `M01_P01.mp3`, `M01_D01.mp3`, and `M01_L01.mp3`.\n\nThe same IDs are intended to be reusable in the companion game.\n
