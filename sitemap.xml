@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://salfayoumi.github.io/</loc>
-    <lastmod>2026-08-15</lastmod>
+    <lastmod>2026-10-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -11,4 +11,6 @@
   <url><loc>https://salfayoumi.github.io/projects/hand-gesture-recognition/</loc></url>
   <url><loc>https://salfayoumi.github.io/projects/book-review-analyzer/</loc></url>
   <url><loc>https://salfayoumi.github.io/projects/bilingual-decision-support/</loc></url>
+  <url><loc>https://salfayoumi.github.io/projects/turkey-fuel-prices/</loc><lastmod>2026-10-11</lastmod></url>
 </urlset>
+

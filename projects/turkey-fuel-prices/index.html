@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Turkey Fuel Prices API — Salsabeel Alfayoumi</title>
+<meta name="description" content="A packaged FastAPI MVP for official Turkish provincial fuel-price reports: typed JSON, validation, caching and historical queries.">
+<link rel="canonical" href="https://salfayoumi.github.io/projects/turkey-fuel-prices/">
+<meta property="og:type" content="website"><meta property="og:title" content="Turkey Fuel Prices API — Salsabeel Alfayoumi"><meta property="og:description" content="Official EPDK reports converted to typed JSON with FastAPI."><meta property="og:url" content="https://salfayoumi.github.io/projects/turkey-fuel-prices/">
+<style>:root{color-scheme:dark;--bg:#0b1118;--surface:#111a24;--ink:#f7f8fb;--muted:#aab5c3;--line:rgba(255,255,255,.11);--accent:#4a88ff;--soft:rgba(74,136,255,.14)}*{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(circle at 88% 12%,rgba(74,136,255,.16),transparent 30rem),var(--bg);color:var(--ink);font-family:Inter,"Segoe UI",system-ui,sans-serif}a{color:inherit;text-decoration:none}.page{width:min(1120px,calc(100% - 48px));margin:auto;padding:34px 0 64px}.topbar{display:flex;justify-content:space-between;align-items:center}.back,.brand{color:var(--muted);font-size:.84rem;font-weight:750}.hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(360px,1fr);gap:56px;align-items:center;margin-top:72px}.eyebrow{margin:0 0 18px;color:#82adff;font-size:.76rem;font-weight:850;letter-spacing:.11em;text-transform:uppercase}h1{margin:0;font-size:clamp(3rem,6vw,5.5rem);line-height:.95;letter-spacing:-.06em}.summary{margin:26px 0 0;color:var(--muted);font-size:1.08rem;line-height:1.78}.tags{display:flex;flex-wrap:wrap;gap:9px;margin:28px 0}.tag{padding:8px 11px;border:1px solid rgba(74,136,255,.3);border-radius:999px;background:var(--soft);color:#d8e5ff;font-size:.76rem;font-weight:800}.button{display:inline-flex;padding:12px 16px;border-radius:12px;background:var(--accent);color:#fff;font-weight:850}.visual{padding:18px;border:1px solid var(--line);border-radius:24px;background:linear-gradient(145deg,rgba(255,255,255,.04),rgba(255,255,255,.015));box-shadow:0 28px 80px rgba(0,0,0,.28)}.visual img{display:block;width:100%;height:auto;border-radius:15px}.proof{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}.proof div{padding:14px;border:1px solid var(--line);border-radius:14px;background:var(--surface)}.proof strong,.proof span{display:block}.proof span{margin-top:3px;color:var(--muted);font-size:.71rem}.footer{margin-top:76px;padding-top:22px;border-top:1px solid var(--line);color:var(--muted);font-size:.75rem}@media(max-width:850px){.page{width:min(100% - 32px,720px)}.hero{grid-template-columns:1fr;gap:36px;margin-top:48px}.proof{grid-template-columns:1fr}h1{font-size:clamp(2.8rem,13vw,4.8rem)}}
+.actions{display:flex;flex-wrap:wrap;gap:12px}.button.secondary{background:transparent;border:1px solid var(--line)}
+.code{margin:0;padding:22px;background:var(--surface);border-radius:16px;color:#d8e5ff;font:14px/1.8 ui-monospace,monospace;white-space:pre-wrap;overflow-wrap:anywhere}
+.details{margin-top:56px;max-width:900px}.details h2{font-size:1.7rem;letter-spacing:-.03em}.details p,.details li{color:var(--muted);line-height:1.8}.details li{margin-bottom:8px}
+.table-wrap{overflow-x:auto}table{width:100%;border-collapse:collapse;font-size:.9rem}th,td{text-align:left;padding:14px 12px;border-bottom:1px solid var(--line)}td{color:var(--muted)}td code{color:#d8e5ff;overflow-wrap:anywhere}
+@media(max-width:850px){.code{font-size:12px}.details{margin-top:40px}}
+</style></head><body><main class="page">
+<div class="topbar"><a class="back" href="/">← Back to portfolio</a><span class="brand">Salsabeel Alfayoumi</span></div>
+<section class="hero"><div><p class="eyebrow">Python backend · Official public data</p><h1>Turkey Fuel Prices API</h1>
+<p class="summary">A packaged FastAPI MVP that turns official EPDK provincial fuel-price reports into structured JSON. Supports current observations, historical queries, distributor comparisons and dated price changes.</p>
+<div class="tags"><span class="tag">FastAPI</span><span class="tag">Pydantic</span><span class="tag">HTTPX</span><span class="tag">OpenAPI</span><span class="tag">Docker configuration</span></div>
+<div class="actions"><a class="button" href="/assets/downloads/turkey-fuel-prices-api.zip" download>Download source ↓</a><a class="button secondary" href="mailto:salfayoumi98@gmail.com">Contact me ↗</a></div></div>
+<div><div class="visual"><pre class="code"># Example request
+GET /api/prices/current
+    ?province=61
+    &amp;fuel_type=diesel
+
+# Inputs
+Province: name or code (1–81)
+Fuel: gasoline, diesel or LPG
+
+# Outputs
+Dated distributor observations
+Minimum / maximum / average
+Source, currency and unit metadata</pre></div>
+<div class="proof"><div><strong>81</strong><span>Turkish provinces</span></div><div><strong>3</strong><span>fuel categories</span></div><div><strong>OpenAPI</strong><span>typed response schemas</span></div></div></div></section>
+<section class="details"><h2>What the implementation does</h2><ul>
+<li>Retrieves official HTML/XLS reports, normalizes provincial distributor observations, and exposes typed JSON through Pydantic response models.</li>
+<li>Accepts province codes and Turkish or unaccented names, plus English/Turkish fuel aliases.</li>
+<li>Validates dates and request ranges. Historical queries span up to 366 days by default and split upstream requests into periods of at most 93 days.</li>
+<li>Uses in-memory caching with a 5-minute TTL for current queries and a 30-minute TTL for history.</li>
+<li>Returns explicit validation, missing-data and upstream-unavailable errors. Includes source metadata and null values when exact comparison dates have no observation.</li>
+</ul></section>
+<section class="details"><h2>Endpoints</h2><div class="table-wrap"><table><thead><tr><th>GET route</th><th>Purpose</th></tr></thead><tbody>
+<tr><td><code>/api/provinces</code></td><td>List the 81 provinces and traffic codes.</td></tr>
+<tr><td><code>/api/prices/current</code></td><td>Latest official observations for a province and fuel.</td></tr>
+<tr><td><code>/api/prices/history</code></td><td>Dated observations in an inclusive date range.</td></tr>
+<tr><td><code>/api/prices/compare</code></td><td>Sort distributor prices and calculate the observed spread.</td></tr>
+<tr><td><code>/api/prices/change</code></td><td>Compare averages with observations exactly 1, 7 and 30 days earlier.</td></tr>
+<tr><td><code>/health</code></td><td>Application health endpoint.</td></tr>
+<tr><td><code>/docs</code></td><td>Interactive OpenAPI documentation.</td></tr>
+</tbody></table></div></section>
+<section class="details"><h2>Run locally</h2><p>Download and extract the source package, then run these commands from its root directory:</p><pre class="code">python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+uvicorn app.main:app --reload --port 8080</pre><p>Open <code>http://localhost:8080/docs</code> to inspect the routes. The package includes a Dockerfile, deployment notes and an OpenAPI specification.</p></section>
+<section class="details"><h2>Project scope</h2><p>This is a packaged MVP, available here as source. Prices come from dated official reports and reflect upstream publication and availability. The implementation uses in-memory caching; a persistent database and scheduled collection are outside the current package.</p></section>
+<div class="footer">Selected project · Salsabeel Alfayoumi</div></main></body></html>

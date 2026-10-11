@@ -2246,3 +2246,13 @@ html[data-theme="light"] .project {
     animation: none;
   }
 }
+
+
+/* Hiring content and API project */
+.project-scope {font-size:.78rem!important;line-height:1.6!important;color:var(--muted);margin-top:1rem;}
+.fuel-visual code {font-size:inherit;overflow-wrap:anywhere;}
+.project-bi .project-media {display:flex;align-items:center;min-height:340px;background:var(--surface);}
+.project-bi .project-media img {object-fit:contain;height:auto;}
+.signal-score strong {font-size:clamp(1.8rem,3vw,3rem);}
+.online .hiring-note {margin-top:1.6rem;font-size:.78rem;line-height:1.6;}
+.online-links small {overflow-wrap:anywhere;}
